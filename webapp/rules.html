@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>知识管理系统</title>
     <meta charset="UTF-8">
@@ -17,103 +18,58 @@
     <script src="js/lib/html5shiv.js"></script>
     <script src="js/lib/respond.min.js"></script>
     <![endif]-->
-
-    <style>
-
-    </style>
-    <script>
-
-    </script>
 </head>
+
 <body>
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-        <div class="row">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena"/>
-                    <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
-                    <div>知识<br/>管理<br/>系统</div>
-                </a>
-            </div>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena" />
+                        <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
+                        <div>知识<br/>管理<br/>系统</div>
+                    </a>
+                </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                    <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
-                    <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
-                    <li class=""><a href ="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
-                    <!-- JENA-887 not yet implemented
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                        <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
+                        <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
+                        <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
+                        <!-- JENA-887 not yet implemented
                     <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
                     -->
-                    <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="status-indicator">
-                        <div>服务器<br/>状态:</div>
-                    </li>
-                    <li class="status-indicator">
-                        <a class="" href="#admin/server-log.html" id="server-status-light"
-                           title="current server status">
-                            <span class="server-up"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /row -->
-    </div><!-- /container -->
-</nav>
+                        <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="status-indicator">
+                            <div>服务器<br/>状态:</div>
+                        </li>
+                        <li class="status-indicator">
+                            <a class="" href="#admin/server-log.html" id="server-status-light" title="current server status">
+                                <span class="server-up"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </nav>
 
-<!--<class="container">-->
-    <!--<div class="row">-->
-        <!--<div class="col-md-12">-->
-            <!--<h1 class="text-center">规则定义</h1>-->
-            <!--<div class="text-muted text-center">-->
-                <!--<small class='host-details'></small>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
 
-    <!--<div class="row current-datasets">-->
-    <!--<div class="col-md-12">-->
-    <!--<h2>-->
-    <!--规则集-->
-    <!--</h2>-->
-    <!--<div id="dataset-selection-list"></div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="row">-->
-    <!--<div class="bg-info col-md-12">-->
-    <!--&lt;!&ndash;<p><i class="fa fa-info-circle"></i> 使用如下页面来执行此服务器的任务:</p>&ndash;&gt;-->
-    <!--<dl class="dl-horizontal">-->
-    <!--<dt><a href="dataset.html">规则集</a></dt>-->
-    <!--<dd>执行查询和修改.</dd>-->
-    <!--<dt><a href="manage.html">管理规则集</a></dt>-->
-    <!--<dd>管理此服务器上的规则集，包括加入规则集.-->
-    <!--</dd>-->
-    <!--<dt><a href="documentation.html">帮助</a></dt>-->
-    <!--<dd>命令列表和在线文档</dd>-->
-    <!--</dl>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="row current-datasets">-->
-    <!--<div class="col-md-12">-->
-    <!--<h2>-->
-    <!--规则集-->
-    <!--</h2>-->
-    <!--<div id="dataset-selection-list"></div>-->
-    <!--</div>-->
-    <!--</div>-->
 
     <table class="row">
         <div class="page-header">
@@ -123,7 +79,7 @@
 
         <!--<h3>Three equal columns</h3>-->
         <!--<p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On-->
-            <!--mobile devices, tablets and below, the columns will automatically stack.</p>-->
+        <!--mobile devices, tablets and below, the columns will automatically stack.</p>-->
         <div class="row">
             <div class="col-md-1">参数</div>
             <div class="col-md-2">区域ID</div>
@@ -131,7 +87,7 @@
             <div class="col-md-2">供需差</div>
             <div class="col-md-2">价格</div>
             <div class="col-md-3">供需差百分比</div>
-            <form action="http://localhost:8080/WebProject/HelloWorld">
+            <form action="http://localhost:15100/">
                 <div class="col-md-1"></div>
                 <input name="district" class="col-md-2">
                 <input name="timeId" class="col-md-2">
@@ -186,23 +142,24 @@
         </div>
 
         <!--<div>-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<th>参数</th>-->
-                    <!--<th>区域号</th>-->
-                    <!--<th>时间ID</th>-->
-                    <!--<th>供需差</th>-->
-                <!--</tr>-->
-                <!--<tr>-->
+        <!--<table>-->
+        <!--<tr>-->
+        <!--<th>参数</th>-->
+        <!--<th>区域号</th>-->
+        <!--<th>时间ID</th>-->
+        <!--<th>供需差</th>-->
+        <!--</tr>-->
+        <!--<tr>-->
 
-                <!--</tr>-->
-                <!--<tr>-->
+        <!--</tr>-->
+        <!--<tr>-->
 
-                <!--</tr>-->
-            <!--</table>-->
+        <!--</tr>-->
+        <!--</table>-->
         <!--</div>-->
     </table>
-</div>
+    </div>
 
 </body>
+
 </html>

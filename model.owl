@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.test.org/Class#"
+     xml:base="http://www.test.org/Class"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.test.org/Class">
+        <owl:versionIRI rdf:resource="file:/C:/Users/Poirot/Desktop/qqFile/��Դ��ģ/��Դ��ģ/SemanticModel4/temp.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.test.org/RelationProperty/终点 -->
+
+    <owl:ObjectProperty rdf:about="http://www.test.org/RelationProperty/终点">
+        <rdfs:range rdf:resource="http://www.test.org/Class/concept/entity/坐标点"/>
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/路"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.test.org/RelationProperty/起点 -->
+
+    <owl:ObjectProperty rdf:about="http://www.test.org/RelationProperty/起点">
+        <rdfs:range rdf:resource="http://www.test.org/Class/concept/entity/坐标点"/>
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/路"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.test.org/出租车/RelationProperty/位置 -->
+
+    <owl:ObjectProperty rdf:about="http://www.test.org/出租车/RelationProperty/位置">
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/出租车"/>
+        <rdfs:range rdf:resource="http://www.test.org/Class/concept/entity/坐标点"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.test.org/区域/RelationProperty/右上角 -->
+
+    <owl:ObjectProperty rdf:about="http://www.test.org/区域/RelationProperty/右上角">
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/区域"/>
+        <rdfs:range rdf:resource="http://www.test.org/Class/concept/entity/坐标点"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.test.org/区域/RelationProperty/左下角 -->
+
+    <owl:ObjectProperty rdf:about="http://www.test.org/区域/RelationProperty/左下角">
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/区域"/>
+        <rdfs:range rdf:resource="http://www.test.org/Class/concept/entity/坐标点"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.test.org/出租车/BasicProperty/名字 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.test.org/出租车/BasicProperty/名字">
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/出租车"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.test.org/出租车/BasicProperty/空车 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.test.org/出租车/BasicProperty/空车">
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/出租车"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#boolean"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.test.org/坐标点/BasicProperty/纬度 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.test.org/坐标点/BasicProperty/纬度">
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/坐标点"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#double"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.test.org/坐标点/BasicProperty/经度 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.test.org/坐标点/BasicProperty/经度">
+        <rdfs:domain rdf:resource="http://www.test.org/Class/concept/entity/坐标点"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#double"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.test.org/Class/concept -->
+
+    <owl:Class rdf:about="http://www.test.org/Class/concept"/>
+    
+
+
+    <!-- http://www.test.org/Class/concept/entity -->
+
+    <owl:Class rdf:about="http://www.test.org/Class/concept/entity">
+        <rdfs:subClassOf rdf:resource="http://www.test.org/Class/concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.test.org/Class/concept/resource -->
+
+    <owl:Class rdf:about="http://www.test.org/Class/concept/resource">
+        <rdfs:subClassOf rdf:resource="http://www.test.org/Class/concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.test.org/Class/concept/entity/出租车 -->
+
+    <owl:Class rdf:about="http://www.test.org/Class/concept/entity/出租车">
+        <rdfs:subClassOf rdf:resource="http://www.test.org/Class/concept/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.test.org/Class/concept/entity/区域 -->
+
+    <owl:Class rdf:about="http://www.test.org/Class/concept/entity/区域">
+        <rdfs:subClassOf rdf:resource="http://www.test.org/Class/concept/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.test.org/Class/concept/entity/坐标点 -->
+
+    <owl:Class rdf:about="http://www.test.org/Class/concept/entity/坐标点">
+        <rdfs:subClassOf rdf:resource="http://www.test.org/Class/concept/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.test.org/Class/concept/entity/路 -->
+
+    <owl:Class rdf:about="http://www.test.org/Class/concept/entity/路">
+        <rdfs:subClassOf rdf:resource="http://www.test.org/Class/concept/entity"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version [Not Released]) http://owlapi.sourceforge.net -->
+
