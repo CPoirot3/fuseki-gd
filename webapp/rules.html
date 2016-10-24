@@ -120,11 +120,11 @@
                     <div id="main" style="width: 600px;height:400px;"></div>
 
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <a class="col-md-3"></a>
                         <h2 class="col-mmd-9">文本定义<h2>
                         <textarea class="col-md-10 pre-scrollable"></textarea>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -141,44 +141,45 @@
         $("#sub").click(function(e) {
             // alert("clicked sub button")
             params = $('#formID').serialize();
-            $.post('http://localhost:15100/', params);
+            $.post('http://10.108.164.19:15100/', params);
         });
         var myChart = echarts.init(document.getElementById('main'));
         $("#results").click(function(e) {
+          $.get("http://10.108.164.19:15100?district=", function(data) {});
+          setInterval(function() {
+            $.get("http://10.108.164.19:15100?district=", function(data) {
+                // alert("get data : " + data);
+                yData = [];
+                xAxisData = [];
+                for (key in data) {
+                  xAxisData.push(key);
+                  yData.push(data[key]);
+                }
 
-          // alert("show results");
-          $.get("http://localhost:15100?district=", function(data) {
-              // alert("get data : " + data);
-              yData = [];
-              xAxisData = [];
-              for (key in data) {
-                xAxisData.push(key);
-                yData.push(data[key]);
-              }
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '分区结果'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['数量']
+                    },
+                    xAxis: {
+                        data: xAxisData
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'number',
+                        type: 'bar',
+                        data: yData
+                    }]
+                };
 
-              // 指定图表的配置项和数据
-              var option = {
-                  title: {
-                      text: '分区结果'
-                  },
-                  tooltip: {},
-                  legend: {
-                      data:['数量']
-                  },
-                  xAxis: {
-                      data: xAxisData
-                  },
-                  yAxis: {},
-                  series: [{
-                      name: 'number',
-                      type: 'bar',
-                      data: yData
-                  }]
-              };
-
-              // 使用刚指定的配置项和数据显示图表。
-              myChart.setOption(option);
-          });
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            });
+          },3000);
         });
     </script>
 </body>
