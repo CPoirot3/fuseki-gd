@@ -86,28 +86,62 @@
             <div>
                 <h2>事件schema</h2>
                 <div class='schema'>
+
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            Dropdown
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                        </ul>
+                    </div>
                     <form id="formID" role="form">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">区域</label>
-                            <input name="district" type="input" class="form-control" id="exampleInput" placeholder="Enter params">
+                            <label for="road">街道</label>
+                            <select name="road" class="form-control" id="road">
+                                <option>翠竹路</option>
+                                <option>红岭中路</option>
+                                <option>福中路</option>
+                                <option>金田路</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">时间</label>
-                            <input name="time" type="input" class="form-control" id="exampleInput" placeholder="">
+                            <label for="time">时间段</label>
+                            <input name="time" type="input" class="form-control" id="time" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">经度</label>
-                            <input name="y" type="input" class="form-control" id="exampleInput" placeholder="Enter params">
+                            <label for="min">最小车辆数</label>
+                            <input name="x" type="input" class="form-control" id="min" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">纬度</label>
-                            <input name="x" type="input" class="form-control" id="exampleInput" placeholder="">
+                            <label for="topic">主题</label>
+                            <input name="topic" type="input" class="form-control" id="topic" placeholder="">
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <input name="file" type="file" id="exampleInputFile">
-                            <!-- <p class="help-block">Example block-level help text here.</p> -->
-                        <!-- </div> -->
+                        <div class="form-group">
+                            <label for="target">目标定义</label>
+                            <select name="target" class="form-control" id="target">
+                                <option>speed < 5</option>
+                                <option>speed < 10</option>
+                                <option>speed < 15</option>
+                                <option>speed < 20</option>
+                            </select>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label for="target">目标定义</label>-->
+                            <!--<input name="target" type="input" class="form-control" id="target" placeholder="">-->
+                        <!--</div>-->
+
+                        <!-- for file input -->
+                        <!--<div class="form-group">-->
+                            <!--<label for="exampleInputFile">File input</label>-->
+                            <!--<input name="file" type="file" id="exampleInputFile">-->
+                            <!--&lt;!&ndash; <p class="help-block">Example block-level help text here.</p> &ndash;&gt;-->
+                        <!--</div>-->
+
                         <!-- <div class="checkbox">
                             <label>
                                 <input type="checkbox"> Check me out
@@ -141,46 +175,47 @@
         $("#sub").click(function(e) {
             // alert("clicked sub button")
             params = $('#formID').serialize();
-            $.post('http://10.108.164.19:15100/', params);
+            alert(params);
+            $.post('http://localhost:15100/', params);
         });
-        var myChart = echarts.init(document.getElementById('main'));
-        $("#results").click(function(e) {
-          $.get("http://10.108.164.19:15100?district=", function(data) {});
-          setInterval(function() {
-            $.get("http://10.108.164.19:15100?district=", function(data) {
-                // alert("get data : " + data);
-                yData = [];
-                xAxisData = [];
-                for (key in data) {
-                  xAxisData.push(key);
-                  yData.push(data[key]);
-                }
-
-                // 指定图表的配置项和数据
-                var option = {
-                    title: {
-                        text: '分区结果'
-                    },
-                    tooltip: {},
-                    legend: {
-                        data:['数量']
-                    },
-                    xAxis: {
-                        data: xAxisData
-                    },
-                    yAxis: {},
-                    series: [{
-                        name: 'number',
-                        type: 'bar',
-                        data: yData
-                    }]
-                };
-
-                // 使用刚指定的配置项和数据显示图表。
-                myChart.setOption(option);
-            });
-          },3000);
-        });
+//        var myChart = echarts.init(document.getElementById('main'));
+//        $("#results").click(function(e) {
+//          $.get("http://10.108.164.19:15100?district=", function(data) {});
+//          setInterval(function() {
+//            $.get("http://10.108.164.19:15100?district=", function(data) {
+//                // alert("get data : " + data);
+//                yData = [];
+//                xAxisData = [];
+//                for (key in data) {
+//                  xAxisData.push(key);
+//                  yData.push(data[key]);
+//                }
+//
+//                // 指定图表的配置项和数据
+//                var option = {
+//                    title: {
+//                        text: '分区结果'
+//                    },
+//                    tooltip: {},
+//                    legend: {
+//                        data:['数量']
+//                    },
+//                    xAxis: {
+//                        data: xAxisData
+//                    },
+//                    yAxis: {},
+//                    series: [{
+//                        name: 'number',
+//                        type: 'bar',
+//                        data: yData
+//                    }]
+//                };
+//
+//                // 使用刚指定的配置项和数据显示图表。
+//                myChart.setOption(option);
+//            });
+//          },3000);
+//        });
     </script>
 </body>
 
