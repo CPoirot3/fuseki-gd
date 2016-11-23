@@ -87,18 +87,6 @@
                 <h2>事件schema</h2>
                 <div class='schema'>
 
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            Dropdown
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                        </ul>
-                    </div>
                     <form id="formID" role="form">
                         <div class="form-group">
                             <label for="road">街道</label>
@@ -111,11 +99,21 @@
                         </div>
                         <div class="form-group">
                             <label for="time">时间段</label>
-                            <input name="time" type="input" class="form-control" id="time" placeholder="">
+                            <select name="time" class="form-control" id="time">
+                                <option>2011/04/18 00:00:00 - 2011/04/18 00:10:00</option>
+                                <option>2011/04/19 07:30:00 - 2011/04/19 07:40:00</option>
+                                <option>2011/04/20 10:00:00 - 2011/04/20 10:10:00</option>
+                                <option>2011/04/21 12:00:00 - 2011/04/21 12:10:00</option>
+                                <option>2011/04/22 15:00:00 - 2011/04/22 15:10:00</option>
+                                <option>2011/04/23 17:30:00 - 2011/04/23 17:40:00</option>
+                                <option>2011/04/24 20:00:00 - 2011/04/24 20:10:00</option>
+                                <option>2011/04/25 22:30:00 - 2011/04/25 22:40:00</option>
+                            </select>
+                            <!--<input name="time" type="input" class="form-control" id="time" placeholder="">-->
                         </div>
                         <div class="form-group">
                             <label for="min">最小车辆数</label>
-                            <input name="x" type="input" class="form-control" id="min" placeholder="">
+                            <input name="min" type="input" class="form-control" id="min" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="topic">主题</label>
@@ -124,16 +122,16 @@
                         <div class="form-group">
                             <label for="target">目标定义</label>
                             <select name="target" class="form-control" id="target">
-                                <option>speed < 5</option>
-                                <option>speed < 10</option>
-                                <option>speed < 15</option>
-                                <option>speed < 20</option>
+                                <option>严重拥堵</option>
+                                <option>拥堵</option>
+                                <option>轻微</option>
+                                <option>畅通</option>
                             </select>
                         </div>
-                        <!--<div class="form-group">-->
-                            <!--<label for="target">目标定义</label>-->
-                            <!--<input name="target" type="input" class="form-control" id="target" placeholder="">-->
-                        <!--</div>-->
+                        <div class="form-group">
+                            <label for="target-txt">目标定义</label>
+                            <input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">
+                        </div>
 
                         <!-- for file input -->
                         <!--<div class="form-group">-->
@@ -176,7 +174,9 @@
             // alert("clicked sub button")
             params = $('#formID').serialize();
             alert(params);
-            $.post('http://localhost:15100/', params);
+            $.post('http://localhost:15100/', params, function (data) {
+                alert(data["result"]);
+            });
         });
 //        var myChart = echarts.init(document.getElementById('main'));
 //        $("#results").click(function(e) {

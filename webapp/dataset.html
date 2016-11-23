@@ -24,10 +24,10 @@
         .containDiv{
             left: 10px;
             position: absolute;
-            width: 200px;
+            width: 150px;
+            border-radius: 5px;
         }
         .containDiv .myDiv:hover{
-            background-color: hsl(201, 91%, 39%);
             color: white;
         }
         .containDiv .myDiv:visited{
@@ -47,23 +47,38 @@
             color: white;
         }
 
-        .myul  li:hover{
+
+        .containDiv h2:active {
+            background: hsl(201, 91%, 39%);
+            color: white;
+        }
+        .containDiv h2:hover {
             background-color: hsl(201, 91%, 39%);
             color: white;
         }
-        .myul  li:visited{
+
+        .containDiv h2:visited {
             background-color: hsl(201, 91%, 39%);
             color: white;
         }
-        .myul  li:focus{
+
+        .myul li:hover{
             background-color: hsl(201, 91%, 39%);
             color: white;
         }
-        .myul  li:link{
+        .myul li:visited{
             background-color: hsl(201, 91%, 39%);
             color: white;
         }
-        .myul  li:active{
+        .myul li:focus{
+            background-color: hsl(201, 91%, 39%);
+            color: white;
+        }
+        .myul li:link{
+            background-color: hsl(201, 91%, 39%);
+            color: white;
+        }
+        .myul li:active{
             background-color: hsl(201, 91%, 39%);
             color: white;
         }
@@ -144,19 +159,19 @@
         <!--</div>-->
 
         <div class="containDiv" title="dialog">
-            Slect Databases
-            <h2><a href="#">parts1</a></h2>
-            <div class="myDiv0 myDiv" title="parts1">
+            Databases
+            <a>part1</a>
+            <div class="myDiv0 myDiv" title="part1">
                 <ul class="myul0 myul">
                 </ul>
             </div>
-            <h2><a href="#">parts2</a></h2>
-            <div class="myDiv1 myDiv" title="parts2">
+            <a>part2</a>
+            <div class="myDiv1 myDiv" title="part2">
                 <ul class="myul1 myul">
                 </ul>
             </div>
-            <h2><a href="#">parts3</a></h2>
-            <div class="myDiv2 myDiv" title="parts3">
+            <a>part3</a>
+            <div class="myDiv2 myDiv" title="part3">
                 <ul class="myul2 myul">
                 </ul>
             </div>
@@ -376,4 +391,4 @@
     <!--<div id="testDialog"></div>-->
     <script data-main="js/app/main.dataset.js" src="js/lib/require.js"></script>
 </body>
-</html>                                                                                           
+</html>
