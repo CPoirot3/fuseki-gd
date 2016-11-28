@@ -8,8 +8,8 @@
     </em>
   </div>
   <div class="col-sm-6">
-    <button class="btn btn-sm btn-default action action-upload-file"><i class="fa fa-upload"></i> upload now</button>
-    <button class="btn btn-sm btn-default action action-remove-upload"><i class="fa fa-minus-circle"></i> remove</button>
+    <button class="btn btn-sm btn-default action action-upload-file"><i class="fa fa-upload"></i> 上传</button>
+    <button class="btn btn-sm btn-default action action-remove-upload"><i class="fa fa-minus-circle"></i> 移除</button>
   </div>
   <div class="col-sm-12">
     <div class="result"></div>

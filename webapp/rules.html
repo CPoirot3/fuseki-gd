@@ -101,11 +101,14 @@
                             <label for="time">时间段</label>
                             <select name="time" class="form-control" id="time">
                                 <option>2011/04/18 00:00:00 - 2011/04/18 00:10:00</option>
+                                <option>2011/04/18 03:00:00 - 2011/04/18 03:10:00</option>
                                 <option>2011/04/18 07:30:00 - 2011/04/19 07:40:00</option>
                                 <option>2011/04/18 10:00:00 - 2011/04/18 10:10:00</option>
                                 <option>2011/04/18 12:00:00 - 2011/04/18 12:10:00</option>
-                                <option>2011/04/18 15:00:00 - 2011/04/18 15:10:00</option>
-                                <option>2011/04/18 17:30:00 - 2011/04/18 17:40:00</option>
+                                <option>2011/04/18 17:00:00 - 2011/04/18 17:10:00</option>
+                                <option>2011/04/18 17:30:00 - 2011/04/18 17:35:00</option>
+                                <option>2011/04/18 17:35:00 - 2011/04/18 17:40:00</option>
+                                <option>2011/04/18 18:00:00 - 2011/04/18 18:10:00</option>
                                 <option>2011/04/18 20:00:00 - 2011/04/18 20:10:00</option>
                                 <option>2011/04/18 22:30:00 - 2011/04/18 22:40:00</option>
                             </select>
@@ -122,10 +125,10 @@
                         <div class="form-group">
                             <label for="target">拥堵程度定义</label>
                             <select name="target" class="form-control" id="target">
-                                <option>严重拥堵</option>
-                                <option>拥堵</option>
-                                <option>轻微拥堵</option>
-                                <option>畅通</option>
+                                <option>严重拥堵 = (and (>= (* valid 100) (* 80 carsInRoad)) (>= carsInRoad 20))</option>
+                                <option>拥堵 = (and (>= (* valid 100) (* 60 carsInRoad)) (>= carsInRoad 20))</option>
+                                <option>轻微拥堵 = (and (>= (* valid 100) (* 40 carsInRoad)) (>= carsInRoad 20))</option>
+                                <!--<option>畅通 = (and (>= (* valid 100) (* 20 carsInRoad)) (>= carsInRoad 20))</option>-->
                             </select>
                         </div>
                         <div class="form-group">
@@ -142,7 +145,7 @@
 
                         <!-- <div class="checkbox">
                             <label>
-                                <input type="checkbox"> Check me out
+                                <input type="checkbox"> Check me out  ∀ ∃
                             </label>
                         </div> -->
 
@@ -170,52 +173,55 @@
         $("")
     </script> -->
     <script>
+        var id = 0;
         $("#sub").click(function(e) {
             // alert("clicked sub button")
             params = $('#formID').serialize();
-            alert(params);
-            $.post('http://localhost:15100/', params, function (data) {
+            id++;
+            params["id"] = id;
+            $.post('http://localhost:15100/deduce', params, function (data) {
                 alert(data["result"]);
             });
         });
-//        var myChart = echarts.init(document.getElementById('main'));
-//        $("#results").click(function(e) {
-//          $.get("http://10.108.164.19:15100?district=", function(data) {});
-//          setInterval(function() {
-//            $.get("http://10.108.164.19:15100?district=", function(data) {
-//                // alert("get data : " + data);
-//                yData = [];
-//                xAxisData = [];
-//                for (key in data) {
-//                  xAxisData.push(key);
-//                  yData.push(data[key]);
-//                }
-//
-//                // 指定图表的配置项和数据
-//                var option = {
-//                    title: {
-//                        text: '分区结果'
-//                    },
-//                    tooltip: {},
-//                    legend: {
-//                        data:['数量']
-//                    },
-//                    xAxis: {
-//                        data: xAxisData
-//                    },
-//                    yAxis: {},
-//                    series: [{
-//                        name: 'number',
-//                        type: 'bar',
-//                        data: yData
-//                    }]
-//                };
-//
-//                // 使用刚指定的配置项和数据显示图表。
-//                myChart.setOption(option);
-//            });
-//          },3000);
-//        });
+
+        var myChart = echarts.init(document.getElementById('main'));
+        $("#results").click(function(e) {
+          $.get("http://localhost:15100/data?id=" + id, function(data) {});
+          setInterval(function() {
+            $.get("http://10.108.164.19:15100?district=", function(data) {
+                // alert("get data : " + data);
+                yData = [];
+                xAxisData = [];
+                for (key in data) {
+                  xAxisData.push(key);
+                  yData.push(data[key]);
+                }
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '分区结果'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['数量']
+                    },
+                    xAxis: {
+                        data: xAxisData
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'number',
+                        type: 'bar',
+                        data: yData
+                    }]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            });
+          }, 5000);
+        });
     </script>
 </body>
 

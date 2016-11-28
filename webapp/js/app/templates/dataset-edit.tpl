@@ -2,9 +2,9 @@
   <div class="col-md-4">
     <div class="bordered-box">
       <span class="pull-right">
-        <button class="btn btn-sm btn-info action list-graphs">list current graphs</button>
+        <button class="btn btn-sm btn-info action list-graphs">当前图列表</button>
       </span>
-      <h3>Available graphs</h3>
+      <h3>可用图</h3>
 
       <% if (countPerformed()) { %>
         <ul class="nav nav-pills nav-stacked graphs">
@@ -17,7 +17,7 @@
           <% } ); %>
         </ul>
       <% } else { %>
-        <p class="text-muted text-sm">Click to list current graphs</p>
+        <p class="text-muted text-sm">列出当前图</p>
       <% } %>
     </div> <!-- /.bordered-box -->
   </div> <!-- /.col-md-4 -->
@@ -27,7 +27,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <div class="input-group">
-            <div class="input-group-addon">graph:</div>
+            <div class="input-group-addon">图:</div>
             <input class="form-control graph-name" type="text" placeholder="">
           </div>
         </div>
@@ -49,8 +49,8 @@
     <div class="row">
       <div class="col-md-12">
         <span class="pull-right">
-          <button class="btn btn-default action cancel-edit"><i class="fa fa-times"></i> discard changes</button>
-          <button class="btn btn-info action save-edit"><i class="fa fa-check"></i> save</button>
+          <button class="btn btn-default action cancel-edit"><i class="fa fa-times"></i>丢弃修改 </button>
+          <button class="btn btn-info action save-edit"><i class="fa fa-check"></i> 保存</button>
         </span>
       </div>
     </div> <!-- /.row -->
