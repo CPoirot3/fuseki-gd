@@ -45,9 +45,8 @@
       <div class="tab-pane" id="upload">
         <p>&nbsp;</p>
         <div class="row">
-          <!--<p class="col-sm-12">If you have a Fuseki config file (i.e. a Jena assembler description),
-          you can upload it here:</p>-->
-          <p>可上传Fuseki配置文件</p>
+          <p class="col-sm-12">If you have a Fuseki config file (i.e. a Jena assembler description),
+          you can upload it here:</p>
         </div>
         <div class="row controls">
           <form id="uploadForm" method="post" action="$/datasets" class="form-horizontal col-sm-12">
