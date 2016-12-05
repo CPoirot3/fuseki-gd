@@ -13,8 +13,9 @@
     <link href="css/fui.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <!-- <script data-main="js/app/main.rules.js" src="js/lib/require.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.min.js"></script>
+
     <!--[if lt IE 9]>
     <script src="js/lib/html5shiv.js"></script>
     <script src="js/lib/respond.min.js"></script>
@@ -24,205 +25,228 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="row">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena" />
-                        <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
-                        <div>知识<br/>管理<br/>系统</div>
-                    </a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                        <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
-                        <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
-                        <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
-                        <!-- JENA-887 not yet implemented
-                    <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
-                    -->
-                        <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="status-indicator">
-                            <div>服务器<br/>状态:</div>
-                        </li>
-                        <li class="status-indicator">
-                            <a class="" href="#admin/server-log.html" id="server-status-light" title="current server status">
-                                <span class="server-up"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </nav>
-
-
+<nav class="navbar navbar-default" role="navigation">
     <div class="container">
-        <table class="row">
-            <div class="page-header">
-                <h2><i class="fa fa-info-circle"></i>定义事件处理规则:</h2>
-                <p class="lead"></p>
+        <div class="row">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena"/>
+                    <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
+                    <div>知识<br/>管理<br/>系统</div>
+                </a>
             </div>
 
-            <!--<h3>Three equal columns</h3>-->
-            <!--<p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On-->
-            <!--mobile devices, tablets and below, the columns will automatically stack.</p>-->
-            <div>
-                <h2>事件schema</h2>
-                <div class='schema'>
-
-                    <form id="formID" role="form">
-                        <div class="form-group">
-                            <label for="road">街道</label>
-                            <select name="road" class="form-control" id="road">
-                                <option>翠竹路</option>
-                                <option>红岭中路</option>
-                                <option>福中路</option>
-                                <option>金田路</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="time">时间段</label>
-                            <select name="time" class="form-control" id="time">
-                                <option>2011/04/18 00:00:00 - 2011/04/18 00:10:00</option>
-                                <option>2011/04/18 03:00:00 - 2011/04/18 03:10:00</option>
-                                <option>2011/04/18 07:30:00 - 2011/04/19 07:40:00</option>
-                                <option>2011/04/18 10:00:00 - 2011/04/18 10:10:00</option>
-                                <option>2011/04/18 12:00:00 - 2011/04/18 12:10:00</option>
-                                <option>2011/04/18 17:00:00 - 2011/04/18 17:10:00</option>
-                                <option>2011/04/18 17:30:00 - 2011/04/18 17:35:00</option>
-                                <option>2011/04/18 17:35:00 - 2011/04/18 17:40:00</option>
-                                <option>2011/04/18 18:00:00 - 2011/04/18 18:10:00</option>
-                                <option>2011/04/18 20:00:00 - 2011/04/18 20:10:00</option>
-                                <option>2011/04/18 22:30:00 - 2011/04/18 22:40:00</option>
-                            </select>
-                            <!--<input name="time" type="input" class="form-control" id="time" placeholder="">-->
-                        </div>
-                        <div class="form-group">
-                            <label for="min">最小车辆数</label>
-                            <input name="min" type="input" class="form-control" id="min" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="topic">主题</label>
-                            <input name="topic" type="input" class="form-control" id="topic" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="target">拥堵程度定义</label>
-                            <select name="target" class="form-control" id="target">
-                                <option>严重拥堵 = (and (>= (* valid 100) (* 80 carsInRoad)) (>= carsInRoad 20))</option>
-                                <option>拥堵 = (and (>= (* valid 100) (* 60 carsInRoad)) (>= carsInRoad 20))</option>
-                                <option>轻微拥堵 = (and (>= (* valid 100) (* 40 carsInRoad)) (>= carsInRoad 20))</option>
-                                <!--<option>畅通 = (and (>= (* valid 100) (* 20 carsInRoad)) (>= carsInRoad 20))</option>-->
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="target-txt">目标定义</label>
-                            <input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">
-                        </div>
-
-                        <!-- for file input -->
-                        <!--<div class="form-group">-->
-                            <!--<label for="exampleInputFile">File input</label>-->
-                            <!--<input name="file" type="file" id="exampleInputFile">-->
-                            <!--&lt;!&ndash; <p class="help-block">Example block-level help text here.</p> &ndash;&gt;-->
-                        <!--</div>-->
-
-                        <!-- <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Check me out  ∀ ∃
-                            </label>
-                        </div> -->
-
-                    </form>
-                    <button id="sub" class="btn btn-default">Submit</button>
-                    <button id="results" class="btn btn-default">show results</button>
-                    <div id="main" style="width: 600px;height:400px;"></div>
-
-
-                    <!-- <div class="row">
-                        <a class="col-md-3"></a>
-                        <h2 class="col-mmd-9">文本定义<h2>
-                        <textarea class="col-md-10 pre-scrollable"></textarea>
-                    </div> -->
-                </div>
-
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                    <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
+                    <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
+                    <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
+                    <!-- JENA-887 not yet implemented
+                <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
+                -->
+                    <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="status-indicator">
+                        <div>服务器<br/>状态:</div>
+                    </li>
+                    <li class="status-indicator">
+                        <a class="" href="#admin/server-log.html" id="server-status-light"
+                           title="current server status">
+                            <span class="server-up"></span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </table>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /row -->
     </div>
+    <!-- /container -->
+</nav>
 
-    <!-- <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
 
-        $("")
-    </script> -->
-    <script>
-        var id = 0;
-        $("#sub").click(function(e) {
-            // alert("clicked sub button")
-            params = $('#formID').serialize();
-            id++;
-            params["id"] = id;
-            $.post('http://localhost:15100/deduce', params, function (data) {
-                alert(data["result"]);
-            });
+<div class="container">
+    <table class="row">
+        <div class="page-header">
+            <h2><i class="fa fa-info-circle"></i>定义事件处理规则:</h2>
+            <p class="lead"></p>
+        </div>
+
+        <!--<h3>Three equal columns</h3>-->
+        <!--<p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On-->
+        <!--mobile devices, tablets and below, the columns will automatically stack.</p>-->
+        <div>
+            <h2>事件schema</h2>
+            <div class='schema'>
+
+                <form id="formID" role="form">
+                    <div class="form-group">
+                        <label for="road">街道</label>
+                        <select name="road" class="form-control" id="road">
+                            <option>翠竹路</option>
+                            <option>红岭中路</option>
+                            <option>福中路</option>
+                            <option>金田路</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">时间段</label>
+                        <select name="time" class="form-control" id="time">
+                            <option>2011/04/25 00:00:00 - 2011/04/25 00:10:00</option>
+                            <option>2011/04/25 03:00:00 - 2011/04/25 03:10:00</option>
+                            <option>2011/04/25 07:30:00 - 2011/04/25 07:40:00</option>
+                            <option>2011/04/25 10:00:00 - 2011/04/25 10:10:00</option>
+                            <option>2011/04/25 12:00:00 - 2011/04/25 12:10:00</option>
+                            <option>2011/04/25 17:00:00 - 2011/04/25 17:10:00</option>
+                            <option>2011/04/25 17:30:00 - 2011/04/25 17:35:00</option>
+                            <option>2011/04/25 17:35:00 - 2011/04/25 17:40:00</option>
+                            <option>2011/04/25 18:00:00 - 2011/04/25 18:10:00</option>
+                            <option>2011/04/25 20:00:00 - 2011/04/25 20:10:00</option>
+                            <option>2011/04/25 22:30:00 - 2011/04/25 22:40:00</option>
+                        </select>
+                        <!--<input name="time" type="input" class="form-control" id="time" placeholder="">-->
+                    </div>
+                    <div class="form-group">
+                        <label for="min">最小车辆数</label>
+                        <input name="min" type="input" class="form-control" id="min" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="topic">主题</label>
+                        <input name="topic" type="input" class="form-control" id="topic" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="target">拥堵程度定义</label>
+                        <select name="target" class="form-control" id="target">
+                            <option>严重拥堵 = (and (>= (* valid 100) (* 80 carsInRoad)) (>= carsInRoad 20))</option>
+                            <option>拥堵 = (and (>= (* valid 100) (* 60 carsInRoad)) (>= carsInRoad 20))</option>
+                            <option>轻微拥堵 = (and (>= (* valid 100) (* 40 carsInRoad)) (>= carsInRoad 20))</option>
+                            <!--<option>畅通 = (and (>= (* valid 100) (* 20 carsInRoad)) (>= carsInRoad 20))</option>-->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="target-txt">目标定义</label>
+                        <input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">
+                    </div>
+
+                    <!-- for file input -->
+                    <!--<div class="form-group">-->
+                    <!--<label for="exampleInputFile">File input</label>-->
+                    <!--<input name="file" type="file" id="exampleInputFile">-->
+                    <!--&lt;!&ndash; <p class="help-block">Example block-level help text here.</p> &ndash;&gt;-->
+                    <!--</div>-->
+
+                    <!-- <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Check me out  ∀ ∃
+                        </label>
+                    </div> -->
+
+                </form>
+                <button id="sub" class="btn btn-default">Submit</button>
+                <button id="results" class="btn btn-default">show results</button>
+                <div id="main" style="width: 600px;height:400px;"></div>
+
+
+                <!-- <div class="row">
+                    <a class="col-md-3"></a>
+                    <h2 class="col-mmd-9">文本定义<h2>
+                    <textarea class="col-md-10 pre-scrollable"></textarea>
+                </div> -->
+            </div>
+
+        </div>
+    </table>
+</div>
+
+<script type="text/javascript">
+    var id = 1;
+    $("#sub").click(function (e) {
+        // alert("clicked sub button")
+        params = $('#formID').serialize();
+        params["id"] = id;
+        $.post('http://localhost:15100/deduce', params, function () {
+            // 可以做一些渲染
         });
+    });
 
-        var myChart = echarts.init(document.getElementById('main'));
-        $("#results").click(function(e) {
-          $.get("http://localhost:15100/data?id=" + id, function(data) {});
-          setInterval(function() {
-            $.get("http://10.108.164.19:15100?district=", function(data) {
-                // alert("get data : " + data);
-                yData = [];
-                xAxisData = [];
-                for (key in data) {
-                  xAxisData.push(key);
-                  yData.push(data[key]);
-                }
-
-                // 指定图表的配置项和数据
-                var option = {
-                    title: {
-                        text: '分区结果'
-                    },
-                    tooltip: {},
-                    legend: {
-                        data:['数量']
-                    },
-                    xAxis: {
-                        data: xAxisData
-                    },
-                    yAxis: {},
-                    series: [{
-                        name: 'number',
-                        type: 'bar',
-                        data: yData
-                    }]
-                };
-
-                // 使用刚指定的配置项和数据显示图表。
-                myChart.setOption(option);
-            });
-          }, 5000);
-        });
-    </script>
+//    function randomData() {
+//        now = new Date(+now + fiveMinutes)
+//        value = value + Math.random() * 21 - 10;
+//        return {
+//            name: now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
+//            value: Math.round(value)
+//        }
+//    }
+//
+//    var fiveMinutes = 5 * 60 * 1000;
+//    now = +new Date(2011, 4, 25, 17, 0, 0);
+//    var data = [];
+//    var times = [];
+//    var value = Math.random() * 1000;
+//    for (var i = 0; i < 10; i++) {
+//        var random = randomData();
+//        data.push(random.value);
+//        times.push(randomData().name);
+//    }
+//    option = {
+//        title: {
+//            text: '动态数据 + 时间坐标轴'
+//        },
+//        xAxis: {
+//            type: 'category',
+//            data: times,
+//            splitLine: {
+//                show: false
+//            }
+//        },
+//        yAxis: {
+//            type: 'value',
+//            boundaryGap: [0, '100%'],
+//            splitLine: {
+//                show: false
+//            }
+//        },
+//        series: [{
+//            name: '模拟数据',
+//            type: 'line',
+//            showSymbol: false,
+//            hoverAnimation: false,
+//            data: data
+//        }]
+//    };
+//
+//    setInterval(function () {
+//        var random = randomData();
+//        data.shift();
+//        times.shift();
+//        data.push(random.value);
+//        times.push(randomData().name);
+//        myChart.setOption({
+//            xAxis: {
+//                data: times
+//            },
+//            series: [{
+//                data: data
+//            }]
+//        });
+//    }, 5000);
+//
+//    // 基于准备好的dom，初始化echarts实例
+//    var myChart = echarts.init(document.getElementById('main'));
+//
+//    // 使用刚指定的配置项和数据显示图表。
+//    myChart.setOption(option);
+</script>
 </body>
 
 </html>
