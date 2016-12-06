@@ -60,7 +60,6 @@ define(
                 fui.views.datasetEditView = new DatasetEditView({model: dataset});
                 fui.views.datasetEditView.render();
             }
-
         });
 
         return DatasetController;

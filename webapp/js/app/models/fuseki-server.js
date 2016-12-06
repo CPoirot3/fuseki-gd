@@ -104,11 +104,9 @@ define(
                 datasets.sort(function (ds0, ds1) {
                     if (ds0.name() > ds1.name()) {
                         return 1;
-                    }
-                    else if (ds0.name() < ds1.name()) {
+                    } else if (ds0.name() < ds1.name()) {
                         return -1;
-                    }
-                    else
+                    } else
                         return 0;
                 });
 
@@ -129,10 +127,11 @@ define(
 
             /** Update or create a dataset by posting to its endpoint */
             updateOrCreateDataset: function (datasetId, data) {
+                alert(this.managementURL());
                 var url = sprintf("%s/$/datasets%s", this.managementURL(),
                     datasetId ? ("/" + datasetId) : ""
-                );
-
+                )
+                alert(url);
                 return $.ajax(url,
                     {
                         data: data,

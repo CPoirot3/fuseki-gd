@@ -38,6 +38,7 @@ define(
 
                 if (this.validateSimpleForm()) {
                     var options = $("#simple-edit form").serializeArray();
+                    // alert(JSON.stringify(options));
                     fui.models.fusekiServer.updateOrCreateDataset(null, options)
                         .done(this.showDataManagementPage)
                         .fail(this.showFailureMessage);

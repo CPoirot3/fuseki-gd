@@ -195,9 +195,7 @@ define(
                 $(".feedback").html(sprintf("<span class='%s'>%s</span>", cls, msg));
             }
 
-
         });
-
 
         return DatasetEdit;
     }

@@ -31,7 +31,6 @@ define(
                     this.model.refresh();
                 }
             }
-
         });
 
 
