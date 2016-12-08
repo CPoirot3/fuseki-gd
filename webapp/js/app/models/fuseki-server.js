@@ -127,11 +127,11 @@ define(
 
             /** Update or create a dataset by posting to its endpoint */
             updateOrCreateDataset: function (datasetId, data) {
-                alert(this.managementURL());
+                // alert(this.managementURL());
                 var url = sprintf("%s/$/datasets%s", this.managementURL(),
                     datasetId ? ("/" + datasetId) : ""
                 )
-                alert(url);
+                // alert(url);
                 return $.ajax(url,
                     {
                         data: data,

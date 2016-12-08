@@ -81,7 +81,6 @@
             <h2><i class="fa fa-info-circle"></i>定义事件处理规则:</h2>
             <p class="lead"></p>
         </div>
-
         <!--<h3>Three equal columns</h3>-->
         <!--<p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On-->
         <!--mobile devices, tablets and below, the columns will automatically stack.</p>-->
@@ -99,44 +98,53 @@
                             <option>金田路</option>
                         </select>
                     </div>
+                    <!--<div class="form-group">-->
+                        <!--<label for="time">时间段</label>-->
+                        <!--<select name="time" class="form-control" id="time">-->
+                            <!--<option>2011/04/25 00:00:00 - 2011/04/25 00:10:00</option>-->
+                            <!--<option>2011/04/25 03:00:00 - 2011/04/25 03:10:00</option>-->
+                            <!--<option>2011/04/25 07:30:00 - 2011/04/25 07:40:00</option>-->
+                            <!--<option>2011/04/25 10:00:00 - 2011/04/25 10:10:00</option>-->
+                            <!--<option>2011/04/25 12:00:00 - 2011/04/25 12:10:00</option>-->
+                            <!--<option>2011/04/25 17:00:00 - 2011/04/25 17:10:00</option>-->
+                            <!--<option>2011/04/25 17:30:00 - 2011/04/25 17:35:00</option>-->
+                            <!--<option>2011/04/25 17:35:00 - 2011/04/25 17:40:00</option>-->
+                            <!--<option>2011/04/25 18:00:00 - 2011/04/25 18:10:00</option>-->
+                            <!--<option>2011/04/25 20:00:00 - 2011/04/25 20:10:00</option>-->
+                            <!--<option>2011/04/25 22:30:00 - 2011/04/25 22:40:00</option>-->
+                        <!--</select>-->
+                        <!--&lt;!&ndash;<input name="time" type="input" class="form-control" id="time" placeholder="">&ndash;&gt;-->
+                    <!--</div>-->
                     <div class="form-group">
-                        <label for="time">时间段</label>
-                        <select name="time" class="form-control" id="time">
-                            <option>2011/04/25 00:00:00 - 2011/04/25 00:10:00</option>
-                            <option>2011/04/25 03:00:00 - 2011/04/25 03:10:00</option>
-                            <option>2011/04/25 07:30:00 - 2011/04/25 07:40:00</option>
-                            <option>2011/04/25 10:00:00 - 2011/04/25 10:10:00</option>
-                            <option>2011/04/25 12:00:00 - 2011/04/25 12:10:00</option>
-                            <option>2011/04/25 17:00:00 - 2011/04/25 17:10:00</option>
-                            <option>2011/04/25 17:30:00 - 2011/04/25 17:35:00</option>
-                            <option>2011/04/25 17:35:00 - 2011/04/25 17:40:00</option>
-                            <option>2011/04/25 18:00:00 - 2011/04/25 18:10:00</option>
-                            <option>2011/04/25 20:00:00 - 2011/04/25 20:10:00</option>
-                            <option>2011/04/25 22:30:00 - 2011/04/25 22:40:00</option>
-                        </select>
-                        <!--<input name="time" type="input" class="form-control" id="time" placeholder="">-->
+                        <label for="topic">主题</label>
+                        <input name="topic" type="input" class="form-control" id="topic" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="severe">严重拥堵定义</label>
+                        <input name="severe" class="form-control" id="severe">
+                    </div>
+                    <div class="form-group">
+                        <label for="conjection" >拥堵定义</label>
+                        <input name="conjection" class="form-control" id="conjection">
+                    </div>
+                    <div class="form-group">
+                        <label for="slightConjection">轻微拥堵定义</label>
+                        <input name="slightConjection" class="form-control" id="slightConjection">
+                        <!--<select name="slightConjection" class="form-control" id="slightConjection">-->
+                            <!--<option>轻微拥堵 = (and (>= (* valid 100) (* 40 carsInRoad)) (>= carsInRoad 20))</option>-->
+                        <!--</select>-->
                     </div>
                     <div class="form-group">
                         <label for="min">最小车辆数</label>
                         <input name="min" type="input" class="form-control" id="min" placeholder="">
                     </div>
                     <div class="form-group">
-                        <label for="topic">主题</label>
-                        <input name="topic" type="input" class="form-control" id="topic" placeholder="">
+                        <label for="speed">速度</label>
+                        <input name="speed" class="form-control" id="speed">
                     </div>
-                    <div class="form-group">
-                        <label for="target">拥堵程度定义</label>
-                        <select name="target" class="form-control" id="target">
-                            <option>严重拥堵 = (and (>= (* valid 100) (* 80 carsInRoad)) (>= carsInRoad 20))</option>
-                            <option>拥堵 = (and (>= (* valid 100) (* 60 carsInRoad)) (>= carsInRoad 20))</option>
-                            <option>轻微拥堵 = (and (>= (* valid 100) (* 40 carsInRoad)) (>= carsInRoad 20))</option>
-                            <!--<option>畅通 = (and (>= (* valid 100) (* 20 carsInRoad)) (>= carsInRoad 20))</option>-->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="target-txt">目标定义</label>
-                        <input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">
-                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">-->
+                    <!--</div>-->
 
                     <!-- for file input -->
                     <!--<div class="form-group">-->
@@ -169,83 +177,137 @@
 </div>
 
 <script type="text/javascript">
+
     var id = 1;
+    var result = 1;
     $("#sub").click(function (e) {
         // alert("clicked sub button")
-        params = $('#formID').serialize();
-        params["id"] = id;
+        var params = $('#formID').serialize();
+        params["id"] = id++;
         $.post('http://localhost:15100/deduce', params, function () {
             // 可以做一些渲染
         });
     });
 
-//    function randomData() {
-//        now = new Date(+now + fiveMinutes)
-//        value = value + Math.random() * 21 - 10;
-//        return {
-//            name: now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
-//            value: Math.round(value)
-//        }
-//    }
-//
-//    var fiveMinutes = 5 * 60 * 1000;
-//    now = +new Date(2011, 4, 25, 17, 0, 0);
-//    var data = [];
-//    var times = [];
-//    var value = Math.random() * 1000;
-//    for (var i = 0; i < 10; i++) {
-//        var random = randomData();
-//        data.push(random.value);
-//        times.push(randomData().name);
-//    }
-//    option = {
-//        title: {
-//            text: '动态数据 + 时间坐标轴'
-//        },
-//        xAxis: {
-//            type: 'category',
-//            data: times,
-//            splitLine: {
-//                show: false
-//            }
-//        },
-//        yAxis: {
+    var buffer = [];
+    var times = [];
+
+    function processTime(t) {
+        var date = new Date();
+        date.setTime(t);
+        return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    }
+
+    var links = buffer.map(function (item, i) {
+        return {
+            source: i,
+            target: i + 1
+        };
+    });
+
+    option = {
+        title: {
+            text: '道路拥堵状态'
+        },
+        xAxis: {
+            type: 'category',
+            data: times,
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
 //            type: 'value',
-//            boundaryGap: [0, '100%'],
+////            boundaryGap: [0, '100%'],
 //            splitLine: {
 //                show: false
 //            }
-//        },
+        },
 //        series: [{
-//            name: '模拟数据',
+//            name: '数据',
 //            type: 'line',
 //            showSymbol: false,
 //            hoverAnimation: false,
-//            data: data
+//            data: buffer
 //        }]
-//    };
-//
-//    setInterval(function () {
-//        var random = randomData();
-//        data.shift();
-//        times.shift();
-//        data.push(random.value);
-//        times.push(randomData().name);
-//        myChart.setOption({
-//            xAxis: {
-//                data: times
-//            },
-//            series: [{
-//                data: data
-//            }]
-//        });
-//    }, 5000);
-//
-//    // 基于准备好的dom，初始化echarts实例
-//    var myChart = echarts.init(document.getElementById('main'));
-//
-//    // 使用刚指定的配置项和数据显示图表。
-//    myChart.setOption(option);
+        series: [
+            {
+                type: 'graph',
+                layout: 'none',
+                coordinateSystem: 'cartesian2d',
+                symbolSize: 30,
+                label: {
+                    normal: {
+                        show: false
+                    }
+                },
+                edgeSymbol: ['circle', 'arrow'],
+                edgeSymbolSize: [4, 10],
+                data: buffer,
+                links: links,
+                lineStyle: {
+                    normal: {
+                        color: '#2f4554'
+                    }
+                }
+            }
+        ]
+    };
+
+
+    $("#results").click(function (e) {
+        buffer = [];
+        times = [];
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        var params = {};
+        params["id"] = result;
+
+        var timer = setInterval(function () {
+            $.post('http://localhost:15100/data', params, function (result) {
+                if (result["value"] == null) {
+                    clearTimeout(timer);
+                }
+                buffer.push(result["value"]);
+                times.push(processTime(result["time"]));
+            });
+
+            var links = buffer.map(function (item, i) {
+                return {
+                    source: i,
+                    target: i + 1
+                };
+            });
+            if (buffer.length > 7) {
+                buffer.shift();
+                times.shift();
+                links.pop();
+            }
+            var links = buffer.map(function (item, i) {
+                return {
+                    source: i,
+                    target: i + 1
+                };
+            });
+
+            myChart.setOption({
+                xAxis: {
+                    data: times
+                },
+                series: [{
+                    links: links,
+                    data: buffer
+                }]
+            });
+        }, 1000);
+
+    });
+
 </script>
 </body>
 

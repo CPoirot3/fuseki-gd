@@ -55,7 +55,7 @@ define(
                 e.preventDefault();
                 var elem = $(e.currentTarget);
                 var dsId = elem.data("ds-id");
-                var msg = sprintf("Are you sure you want to delete dataset <code>%s</code>? This action cannot be reversed.", dsId);
+                var msg = sprintf("确认删除数据集 <code>%s</code>? 操作无恢复.", dsId);
 
                 this.showConfirmationModal(msg, dsId, "action.delete.confirm");
             },
@@ -65,7 +65,7 @@ define(
                 e.preventDefault();
                 var elem = $(e.currentTarget);
                 var dsId = elem.data("ds-id");
-                var msg = sprintf("Are you sure you want to create a backup of dataset <code>%s</code>? This action may take some time to complete", dsId);
+                var msg = sprintf("确认备份数据集 <code>%s</code>? 操作将消耗一定时间", dsId);
 
                 this.showConfirmationModal(msg, dsId, "action.backup.confirm");
             },
@@ -125,7 +125,7 @@ define(
             /** Removing the dataset did not work: notify the user */
             onDatasetRemoveFail: function (jqxhr, msg, err, dsId) {
                 this.feedbackArea(dsId)
-                    .html(sprintf("<p class='text-warning'>Sorry, removing dataset %s did not work, because: '%s'</p>", dsId, err || msg));
+                    .html(sprintf("<p class='text-warning'>抱歉, 无法移除数据集%s , 因为: '%s'</p>", dsId, err || msg));
             },
 
             /** User has confirmed backing up the dataset */
@@ -149,7 +149,7 @@ define(
                 var msg = sprintf("<p>Task <strong>%s</strong> started at %s%s</p>",
                     task.operationType,
                     task.taskDescription.started,
-                    status.finished ? sprintf(", finished at %s", status.finished) : " &ndash; ongoing");
+                    status.finished ? sprintf(", 完成时间 %s", status.finished) : " &ndash; 正在进行");
 
                 this.feedbackArea(status.dsId)
                     .html(msg);
