@@ -14,10 +14,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 # Run fuseki as a standalone server
 
 export FUSEKI_HOME="${FUSEKI_HOME:-$PWD}"
+echo $FUSEKI_HOME
 
 if [ ! -e "$FUSEKI_HOME" ]
 then
@@ -39,6 +39,8 @@ do
 	break
     fi
 done
+
+echo $JAR
 
 if [ "$JAR" = "" ]
 then
@@ -79,17 +81,16 @@ then
 fi
 
 JVM_ARGS=${JVM_ARGS:--Xmx1200M}
-
+echo $JVM_ARGS
 exec $JAVA $JVM_ARGS -jar "$JAR" "$@"
 
 ## Adding custom code to the Fuseki server:
 ##
-## It is also possible to launch Fuseki using 
+## It is also possible to launch Fuseki using
 ##   java $JVM_ARGS -cp "$JAR" org.apache.jena.fuseki.cmd.FusekiCmd "$@"
 ##
 ## "exec" is optional - it simply frees up an OS process.
 ## In this way, you can add custom java to the classpath:
-## 
+##
 ##   APPJAR=MyCode.jar
 ##   java $JVM_ARGS -cp "$JAR:$APPJAR" org.apache.jena.fuseki.cmd.FusekiCmd "$@"
-

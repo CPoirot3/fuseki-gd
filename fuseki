@@ -34,7 +34,7 @@
 # FUSEKI_HOME
 #   Where Fuseki is installed.  If not set, the script will try
 #   to guess it based on the script invokation path.
-# 
+#
 # FUSEKI_BASE
 #   The root of the runtime area - logs files, system files, local configuration.
 #   Defaults to /etc/fuseki.
@@ -52,7 +52,7 @@
 #    --config=$FUSEKI_CONF               # if FUSEKI_CONF is set
 #
 # FUSEKI_START
-#   Path to the jar file. Defaults to $FUSEKI_HOME/fuseki-server.jar 
+#   Path to the jar file. Defaults to $FUSEKI_HOME/fuseki-server.jar
 #
 # FUSEKI_CLASSES
 #   Path to extra jars to add to the class path.  Defaults to none
@@ -65,11 +65,11 @@
 #   If set, the server will be run as this user
 #
 # FUSEKI_LOGS
-#   Directory where logs will be generated. 
+#   Directory where logs will be generated.
 #   Fixed as $FUSEKI_BASE/logs.
 #
 # FUSEKI_LOGS_STDERROUT
-#   Log file with stderr and stdout log output from Fuseki. 
+#   Log file with stderr and stdout log output from Fuseki.
 #   Defaults to $FUSEKI_LOGS/stderrout.log
 
 
@@ -196,7 +196,6 @@ if [ "$cygwin" == "true" ]
 then
   FUSEKI_BASE=`cygpath -w "$FUSEKI_BASE"`
 fi
-
 
 if [ ! -e "$FUSEKI_BASE" -o ! -d "$FUSEKI_BASE" ]
 then
@@ -402,7 +401,7 @@ start() {
       echo $! > "$FUSEKI_PID"
     fi
 )
-    
+
     log_end_msg 0
     print_started
   fi
