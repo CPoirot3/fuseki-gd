@@ -81,42 +81,23 @@
             <h2><i class="fa fa-info-circle"></i>定义事件处理规则:</h2>
             <p class="lead"></p>
         </div>
-        <!--<h3>Three equal columns</h3>-->
-        <!--<p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On-->
-        <!--mobile devices, tablets and below, the columns will automatically stack.</p>-->
-        <div>
-            <h2>事件schema</h2>
-            <div class='schema'>
 
+        <div>
+            <h2>推理</h2>
+            <div class='schema'>
                 <form id="formID" role="form">
                     <div class="form-group">
-                        <label for="road">街道</label>
-                        <select name="road" class="form-control" id="road">
+                        <label for="scope">Scope</label>
+                        <select name="scope" class="form-control" id="scope">
                             <option>翠竹路</option>
                             <option>红岭中路</option>
                             <option>福中路</option>
                             <option>金田路</option>
                         </select>
                     </div>
-                    <!--<div class="form-group">-->
-                        <!--<label for="time">时间段</label>-->
-                        <!--<select name="time" class="form-control" id="time">-->
-                            <!--<option>2011/04/25 00:00:00 - 2011/04/25 00:10:00</option>-->
-                            <!--<option>2011/04/25 03:00:00 - 2011/04/25 03:10:00</option>-->
-                            <!--<option>2011/04/25 07:30:00 - 2011/04/25 07:40:00</option>-->
-                            <!--<option>2011/04/25 10:00:00 - 2011/04/25 10:10:00</option>-->
-                            <!--<option>2011/04/25 12:00:00 - 2011/04/25 12:10:00</option>-->
-                            <!--<option>2011/04/25 17:00:00 - 2011/04/25 17:10:00</option>-->
-                            <!--<option>2011/04/25 17:30:00 - 2011/04/25 17:35:00</option>-->
-                            <!--<option>2011/04/25 17:35:00 - 2011/04/25 17:40:00</option>-->
-                            <!--<option>2011/04/25 18:00:00 - 2011/04/25 18:10:00</option>-->
-                            <!--<option>2011/04/25 20:00:00 - 2011/04/25 20:10:00</option>-->
-                            <!--<option>2011/04/25 22:30:00 - 2011/04/25 22:40:00</option>-->
-                        <!--</select>-->
-                        <!--&lt;!&ndash;<input name="time" type="input" class="form-control" id="time" placeholder="">&ndash;&gt;-->
-                    <!--</div>-->
+                    <h3>推理目标</h3>
                     <div class="form-group">
-                        <label for="topic">主题</label>
+                        <label for="topic">事件主题</label>
                         <input name="topic" type="input" class="form-control" id="topic" placeholder="">
                     </div>
                     <div class="form-group">
@@ -124,15 +105,12 @@
                         <input name="severe" class="form-control" id="severe">
                     </div>
                     <div class="form-group">
-                        <label for="conjection" >拥堵定义：缓速车量比例</label>
-                        <input name="conjection" class="form-control" id="conjection">
+                        <label for="medium" >拥堵定义：缓速车量比例</label>
+                        <input name="medium" class="form-control" id="medium">
                     </div>
                     <div class="form-group">
-                        <label for="slightConjection">轻微拥堵定义：缓速车量比例</label>
-                        <input name="slightConjection" class="form-control" id="slightConjection">
-                        <!--<select name="slightConjection" class="form-control" id="slightConjection">-->
-                            <!--<option>轻微拥堵 = (and (>= (* valid 100) (* 40 carsInRoad)) (>= carsInRoad 20))</option>-->
-                        <!--</select>-->
+                        <label for="slight">轻微拥堵定义：缓速车量比例</label>
+                        <input name="slight" class="form-control" id="slight">
                     </div>
                     <div class="form-group">
                         <label for="min">最小数据量</label>
@@ -160,10 +138,9 @@
                     </div> -->
 
                 </form>
-                <button id="sub" class="btn btn-default">推理</button>
+                <button id="deduce" class="btn btn-default">推理</button>
                 <button id="results" class="btn btn-default">结果展示</button>
                 <div id="main" style="width: 600px;height:400px;"></div>
-
 
                 <!-- <div class="row">
                     <a class="col-md-3"></a>
@@ -179,12 +156,12 @@
 <script type="text/javascript">
 
     var id = 1;
-    var result = 1;
-    $("#sub").click(function (e) {
-        // alert("clicked sub button")
-        var params = $('#formID').serialize();
-        params["id"] = id++;
-        $.post('http://localhost:15100/deduce', params, function () {
+    var resultId = 1;
+    $("#deduce").click(function (e) {
+
+        var deduceParams = $('#formID').serialize();
+        deduceParams = deduceParams + "&id=" + id;
+        $.post('http://localhost:15100/deduce', deduceParams, function () {
             // 可以做一些渲染
         });
     });
@@ -256,6 +233,7 @@
 
 
     $("#results").click(function (e) {
+        e.preventDefault();
         buffer = [];
         times = [];
 
@@ -266,7 +244,7 @@
         myChart.setOption(option);
 
         var params = {};
-        params["id"] = result;
+        params["id"] = resultId;
 
         var timer = setInterval(function () {
             $.post('http://localhost:15100/data', params, function (result) {
