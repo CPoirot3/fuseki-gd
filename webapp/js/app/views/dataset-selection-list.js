@@ -4,30 +4,30 @@
  */
 
 define(
-    function (require) {
-        var Backbone = require("backbone"),
-            _ = require("underscore"),
-            fui = require("app/fui"),
-            datasetSelectionListTemplate = require("plugins/text!app/templates/dataset-selection-list.tpl");
+  function(require) {
+    var Backbone = require("backbone"),
+      _ = require("underscore"),
+      fui = require("app/fui"),
+      datasetSelectionListTemplate = require("plugins/text!app/templates/dataset-selection-list.tpl");
 
-        var DatasetSelectionListView = Backbone.Marionette.ItemView.extend({
-            initialize: function () {
+    var DatasetSelectionListView = Backbone.Marionette.ItemView.extend({
+      initialize: function() {
 //        _.bindAll(this, "onFilter", "onModelChange");
-                this.listenTo(this.model, "change", this.onModelChange, this);
-            },
+        this.listenTo(this.model, "change", this.onModelChange, this);
+      },
 
-            template: _.template(datasetSelectionListTemplate),
+      template: _.template(datasetSelectionListTemplate),
 
-            el: "#dataset-selection-list",
+      el: "#dataset-selection-list",
 
-            ui: {},
+      ui: {},
 
-            events: {
+      events: {
 //        "change #independent-variable-selection": "selectVariable",
 //        "click a.action.filter": "onFilter"
-            },
+      },
 
-            templateHelpers: {},
+      templateHelpers: {},
 
 //      /** Update the model when the user changes the selection */
 //      selectVariable: function( event ) {
@@ -43,14 +43,14 @@ define(
 //        bgViz.layouts.filterDialog.showFilter( viewName, varModel );
 //      },
 
-            /** If the model changes, update the summary */
-            onModelChange: function (event) {
+      /** If the model changes, update the summary */
+      onModelChange: function(event) {
 //        this.ui.summary.html( this.model.independentVar().component.range().summarise() );
-            }
+      }
 
-        });
+    });
 
 
-        return DatasetSelectionListView;
-    }
+    return DatasetSelectionListView;
+  }
 );

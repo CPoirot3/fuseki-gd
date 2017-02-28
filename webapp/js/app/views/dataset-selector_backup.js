@@ -6,23 +6,23 @@
  **/
 
 define(
-  function( require ) {
+  function(require) {
     "use strict";
 
-    var Marionette = require( "marionette" ),
-        Backbone = require( "backbone" ),
-        _ = require( "underscore" ),
-        fui = require( "app/fui" ),
-        sprintf = require( "sprintf" ),
-        datasetSelectorTemplate = require( "plugins/text!app/templates/dataset-selector.tpl" );
+    var Marionette = require("marionette"),
+      Backbone = require("backbone"),
+      _ = require("underscore"),
+      fui = require("app/fui"),
+      sprintf = require("sprintf"),
+      datasetSelectorTemplate = require("plugins/text!app/templates/dataset-selector.tpl");
 
-    var DatasetSelectorView = Backbone.Marionette.ItemView.extend( {
+    var DatasetSelectorView = Backbone.Marionette.ItemView.extend({
 
-      initialize: function(){
-        this.listenTo( this.model, "change", this.render, this );
+      initialize: function() {
+        this.listenTo(this.model, "change", this.render, this);
       },
 
-      template: _.template( datasetSelectorTemplate ),
+      template: _.template(datasetSelectorTemplate),
 
       el: ".dataset-selector-container",
 
@@ -42,7 +42,7 @@ define(
         var selector = $('.selectpicker');
         selector.selectpicker('refresh');
 
-        if (selector.val()) {
+        if(selector.val()) {
           this.unHideDatasetElements();
           this.onChangeDataset();
         }
@@ -53,10 +53,10 @@ define(
        * the underlying model. TODO: should also update the application
        * URL.
        */
-      onChangeDataset: function( e ) {
+      onChangeDataset: function(e) {
         var newDatasetName = this.ui.select.val();
-        this.model.set( "selectedDatasetName", newDatasetName );
-        this.notifyDatasetName( newDatasetName );
+        this.model.set("selectedDatasetName", newDatasetName);
+        this.notifyDatasetName(newDatasetName);
       },
 
       /**
@@ -64,15 +64,15 @@ define(
        * are not hidden, and vice-versa.
        */
       unHideDatasetElements: function() {
-        $(".no-dataset").addClass( "hidden" );
-        $(".with-dataset").removeClass( "hidden" );
+        $(".no-dataset").addClass("hidden");
+        $(".with-dataset").removeClass("hidden");
       },
 
       /** Trigger an event to notify other components that the dataset
        * name has been selected.
        */
-      notifyDatasetName: function( dsName ) {
-        fui.vent.trigger( "dataset.changed", dsName || this.ui.select.val() );
+      notifyDatasetName: function(dsName) {
+        fui.vent.trigger("dataset.changed", dsName || this.ui.select.val());
       }
 
 

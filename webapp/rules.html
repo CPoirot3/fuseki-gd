@@ -2,217 +2,217 @@
 <html xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <title>知识管理系统</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <link href="css/codemirror.css" rel="stylesheet" media="screen">
-    <link href="css/qonsole.css" rel="stylesheet" media="screen">
-    <link href="css/jquery.dataTables.css" rel="stylesheet" media="screen">
-    <link href="css/fui.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-    <!-- <script data-main="js/app/main.rules.js" src="js/lib/require.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.min.js"></script>
+  <title>知识管理系统</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
+  <link href="css/codemirror.css" rel="stylesheet" media="screen">
+  <link href="css/qonsole.css" rel="stylesheet" media="screen">
+  <link href="css/jquery.dataTables.css" rel="stylesheet" media="screen">
+  <link href="css/fui.css" rel="stylesheet" media="screen">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+  <!-- <script data-main="js/app/main.rules.js" src="js/lib/require.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.min.js"></script>
 
-    <!--[if lt IE 9]>
-    <script src="js/lib/html5shiv.js"></script>
-    <script src="js/lib/respond.min.js"></script>
-    <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="js/lib/html5shiv.js"></script>
+  <script src="js/lib/respond.min.js"></script>
+  <![endif]-->
 
 
 </head>
 
 <body>
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-        <div class="row">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena"/>
-                    <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
-                    <div>知识<br/>管理<br/>系统</div>
-                </a>
-            </div>
+  <div class="container">
+    <div class="row">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena"/>
+          <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
+          <div>知识<br/>管理<br/>系统</div>
+        </a>
+      </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                    <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
-                    <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
-                    <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
-                    <!-- JENA-887 not yet implemented
-                <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
-                -->
-                    <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="status-indicator">
-                        <div>服务器<br/>状态:</div>
-                    </li>
-                    <li class="status-indicator">
-                        <a class="" href="#admin/server-log.html" id="server-status-light"
-                           title="current server status">
-                            <span class="server-up"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /row -->
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
+          <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
+          <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
+          <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
+          <!-- JENA-887 not yet implemented
+      <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
+      -->
+          <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="status-indicator">
+            <div>服务器<br/>状态:</div>
+          </li>
+          <li class="status-indicator">
+            <a class="" href="#admin/server-log.html" id="server-status-light"
+               title="current server status">
+              <span class="server-up"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
     </div>
-    <!-- /container -->
+    <!-- /row -->
+  </div>
+  <!-- /container -->
 </nav>
 
 
 <div class="container">
-    <table class="row">
-        <div class="page-header">
-            <h2><i class="fa fa-info-circle"></i>定义事件处理规则:</h2>
-            <p class="lead"></p>
-        </div>
+  <table class="row">
+    <div class="page-header">
+      <h2><i class="fa fa-info-circle"></i>定义事件处理规则:</h2>
+      <p class="lead"></p>
+    </div>
 
-        <div>
-            <h2>推理</h2>
-            <div class='schema'>
-                <form id="formID" role="form">
-                    <h3>推理目标</h3>
-                    <div class="form-group">
-                        <label for="topic">事件主题</label>
-                        <select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">
-                            <option>Traffic</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="scope">Scope</label>
-                        <select name="scope" class="form-control" id="scope">
-                            <option>翠竹路</option>
-                            <option>红岭中路</option>
-                            <option>福中路</option>
-                            <option>金田路</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="map-source">映射定义</label>
-                        <select name="map-source" type="input" class="form-control" id="map-source" placeholder="">
-                            <option>x,y -> Position</option>
-                            <option>x,y -> Road</option>
-                        </select>
-                        <!--<select name="map-knowledge" type="input" class="form-control" id="map-knowledge" placeholder="">-->
-                            <!--<option>Position</option>-->
-                            <!--<option>Road</option>-->
-                        <!--</select>-->
-                    </div>
-                    <div class="form-group">
-                        <label for="severe">严重拥堵定义：缓速车量比例</label>
-                        <input name="severe" class="form-control" id="severe">
-                    </div>
-                    <div class="form-group">
-                        <label for="medium" >拥堵定义：缓速车量比例</label>
-                        <input name="medium" class="form-control" id="medium">
-                    </div>
-                    <div class="form-group">
-                        <label for="slight">轻微拥堵定义：缓速车量比例</label>
-                        <input name="slight" class="form-control" id="slight">
-                    </div>
-                    <div class="form-group">
-                        <label for="min">最小数据量</label>
-                        <input name="min" type="input" class="form-control" id="min" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="speed">缓速阈值定义</label>
-                        <input name="speed" class="form-control" id="speed">
-                    </div>
-                    <!--<div class="form-group">-->
-                        <!--<input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">-->
-                    <!--</div>-->
+    <div>
+      <h2>推理</h2>
+      <div class='schema'>
+        <form id="formID" role="form">
+          <h3>推理目标</h3>
+          <div class="form-group">
+            <label for="topic">事件主题</label>
+            <select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">
+              <option>Traffic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="scope">Scope</label>
+            <select name="scope" class="form-control" id="scope">
+              <option>福中路</option>
+              <option>红岭中路</option>
+              <option>翠竹路</option>
+              <option>金田路</option>
+            </select>
+          </div>
+          <div>
+            <label for="map-source">映射定义</label>
+            <select name="map-source" type="input" class="form-control" id="map-source" placeholder="">
+              <option>x,y -> Position</option>
+              <option>x,y -> Road</option>
+            </select>
+            <!--<select name="map-knowledge" type="input" class="form-control" id="map-knowledge" placeholder="">-->
+            <!--<option>Position</option>-->
+            <!--<option>Road</option>-->
+            <!--</select>-->
+          </div>
+          <div class="form-group">
+            <label for="severe">严重拥堵定义：缓速车量比例</label>
+            <input name="severe" class="form-control" id="severe">
+          </div>
+          <div class="form-group">
+            <label for="medium">拥堵定义：缓速车量比例</label>
+            <input name="medium" class="form-control" id="medium">
+          </div>
+          <div class="form-group">
+            <label for="slight">轻微拥堵定义：缓速车量比例</label>
+            <input name="slight" class="form-control" id="slight">
+          </div>
+          <div class="form-group">
+            <label for="min">最小数据量</label>
+            <input name="min" type="input" class="form-control" id="min" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="speed">缓速阈值定义</label>
+            <input name="speed" class="form-control" id="speed">
+          </div>
+          <!--<div class="form-group">-->
+          <!--<input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">-->
+          <!--</div>-->
 
-                    <!-- for file input -->
-                    <!--<div class="form-group">-->
-                    <!--<label for="exampleInputFile">File input</label>-->
-                    <!--<input name="file" type="file" id="exampleInputFile">-->
-                    <!--&lt;!&ndash; <p class="help-block">Example block-level help text here.</p> &ndash;&gt;-->
-                    <!--</div>-->
+          <!-- for file input -->
+          <!--<div class="form-group">-->
+          <!--<label for="exampleInputFile">File input</label>-->
+          <!--<input name="file" type="file" id="exampleInputFile">-->
+          <!--&lt;!&ndash; <p class="help-block">Example block-level help text here.</p> &ndash;&gt;-->
+          <!--</div>-->
 
-                    <!-- <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out  ∀ ∃
-                        </label>
-                    </div> -->
+          <!-- <div class="checkbox">
+              <label>
+                  <input type="checkbox"> Check me out  ∀ ∃
+              </label>
+          </div> -->
 
-                </form>
-                <button id="deduce" class="btn btn-default">推理</button>
-                <button id="results" class="btn btn-default">结果展示</button>
-                <div id="main" style="width: 600px;height:400px;"></div>
+        </form>
+        <button id="deduce" class="btn btn-default">推理</button>
+        <button id="results" class="btn btn-default">结果展示</button>
+        <div id="main" style="width: 600px;height:400px;"></div>
 
-                <!-- <div class="row">
-                    <a class="col-md-3"></a>
-                    <h2 class="col-mmd-9">文本定义<h2>
-                    <textarea class="col-md-10 pre-scrollable"></textarea>
-                </div> -->
-            </div>
+        <!-- <div class="row">
+            <a class="col-md-3"></a>
+            <h2 class="col-mmd-9">文本定义<h2>
+            <textarea class="col-md-10 pre-scrollable"></textarea>
+        </div> -->
+      </div>
 
-        </div>
-    </table>
+    </div>
+  </table>
 </div>
 
 <script type="text/javascript">
 
-    var id = 1;
-    var resultId = 1;
-    $("#deduce").click(function (e) {
+  var id = 1;
+  var resultId = 1;
+  $("#deduce").click(function(e) {
 
-        var deduceParams = $('#formID').serialize();
-        deduceParams = deduceParams + "&id=" + id;
-        $.post('http://localhost:15100/deduce', deduceParams, function () {
-            // 可以做一些渲染
-        });
+    var deduceParams = $('#formID').serialize();
+    deduceParams = deduceParams + "&id=" + id;
+    $.post('http://localhost:15100/deduce', deduceParams, function() {
+      // 可以做一些渲染
     });
+  });
 
-    var buffer = [];
-    var times = [];
+  var buffer = [];
+  var times = [];
 
-    function processTime(t) {
-        var date = new Date();
-        date.setTime(t);
-        return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    }
+  function processTime(t) {
+    var date = new Date();
+    date.setTime(t);
+    return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+  }
 
-    var links = buffer.map(function (item, i) {
-        return {
-            source: i,
-            target: i + 1
-        };
-    });
+  var links = buffer.map(function(item, i) {
+    return {
+      source: i,
+      target: i + 1
+    };
+  });
 
-    option = {
-        title: {
-            text: '道路拥堵状态'
-        },
-        xAxis: {
-            type: 'category',
-            data: times,
-            splitLine: {
-                show: false
-            }
-        },
-        yAxis: {
+  option = {
+    title: {
+      text: '道路拥堵状态'
+    },
+    xAxis: {
+      type: 'category',
+      data: times,
+      splitLine: {
+        show: false
+      }
+    },
+    yAxis: {
 //            type: 'value',
 ////            boundaryGap: [0, '100%'],
 //            splitLine: {
 //                show: false
 //            }
-        },
+    },
 //        series: [{
 //            name: '数据',
 //            type: 'line',
@@ -220,84 +220,87 @@
 //            hoverAnimation: false,
 //            data: buffer
 //        }]
-        series: [
-            {
-                type: 'graph',
-                layout: 'none',
-                coordinateSystem: 'cartesian2d',
-                symbolSize: 30,
-                label: {
-                    normal: {
-                        show: false
-                    }
-                },
-                edgeSymbol: ['circle', 'arrow'],
-                edgeSymbolSize: [4, 10],
-                data: buffer,
-                links: links,
-                lineStyle: {
-                    normal: {
-                        color: '#2f4554'
-                    }
-                }
-            }
-        ]
-    };
+    series: [
+      {
+        type: 'graph',
+        layout: 'none',
+        coordinateSystem: 'cartesian2d',
+        symbolSize: 30,
+        label: {
+          normal: {
+            show: false
+          }
+        },
+        edgeSymbol: ['circle', 'arrow'],
+        edgeSymbolSize: [4, 10],
+        data: buffer,
+        links: links,
+        lineStyle: {
+          normal: {
+            color: '#2f4554'
+          }
+        }
+      }
+    ]
+  };
 
 
-    $("#results").click(function (e) {
-        e.preventDefault();
-        buffer = [];
-        times = [];
+  $("#results").click(function(e) {
+    e.preventDefault();
+    buffer = [];
+    times = [];
 
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
 
-        var params = {};
-        params["id"] = resultId;
+    var params = {};
+    params["id"] = resultId;
 
-        var timer = setInterval(function () {
-            $.post('http://localhost:15100/data', params, function (result) {
-                if (result["value"] == null) {
-                    clearTimeout(timer);
-                }
-                buffer.push(result["value"]);
-                times.push(processTime(result["time"]));
-            });
+    var timer = setInterval(function() {
+      $.post('http://localhost:15100/data', params, function(result) {
+        if(result["value"] == null) {
+          clearTimeout(timer);
+        }
+        buffer.push(result["value"]);
+        times.push(processTime(result["time"]));
+      });
 
-            var links = buffer.map(function (item, i) {
-                return {
-                    source: i,
-                    target: i + 1
-                };
-            });
-            if (buffer.length > 7) {
-                buffer.shift();
-                times.shift();
-                links.pop();
-            }
-            var links = buffer.map(function (item, i) {
-                return {
-                    source: i,
-                    target: i + 1
-                };
-            });
+      var links = buffer.map(function(item, i) {
+        return {
+          source: i,
+          target: i + 1
+        };
+      });
+      if(buffer.length > 7) {
+        buffer.shift();
+        times.shift();
+        links.pop();
+      }
+      var links = buffer.map(function(item, i) {
+        return {
+          source: i,
+          target: i + 1
+        };
+      });
 
-            myChart.setOption({
-                xAxis: {
-                    data: times
-                },
-                series: [{
-                    links: links,
-                    data: buffer
-                }]
-            });
-        }, 1000);
+      myChart.setOption({
+        xAxis: {
+          data: times
+        },
+        series: [{
+          links: links,
+          data: buffer
+        }]
+      });
+    }, 1000);
 
-    });
+  });
+
+</script>
+<script>
 
 </script>
 </body>

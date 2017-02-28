@@ -1,49 +1,49 @@
 /** Component for creating a new dataset with a few simple options */
 
 define(
-    function (require) {
-        var Backbone = require("backbone"),
-            _ = require("underscore"),
-            fui = require("app/fui"),
-            DatasetSimpleCreateTpl = require("plugins/text!app/templates/dataset-simple-create.tpl");
+  function(require) {
+    var Backbone = require("backbone"),
+      _ = require("underscore"),
+      fui = require("app/fui"),
+      DatasetSimpleCreateTpl = require("plugins/text!app/templates/dataset-simple-create.tpl");
 
-        var DatasetSimpleCreate = Backbone.Marionette.ItemView.extend({
+    var DatasetSimpleCreate = Backbone.Marionette.ItemView.extend({
 
-            initialize: function () {
-                _.bindAll(this, "onCommitSimple", "clearWarnings");
-            },
+      initialize: function() {
+        _.bindAll(this, "onCommitSimple", "clearWarnings");
+      },
 
-            template: _.template(DatasetSimpleCreateTpl),
+      template: _.template(DatasetSimpleCreateTpl),
 
-            ui: {},
+      ui: {},
 
-            el: "#dataset-simple-create",
+      el: "#dataset-simple-create",
 
-            events: {
-                "click a.action.commit.simple": "onCommitSimple",
-                "submit form": "onCommitSimple",
-                "keydown input[name=dbName]": "clearWarnings"
-            },
+      events: {
+        "click a.action.commit.simple": "onCommitSimple",
+        "submit form": "onCommitSimple",
+        "keydown input[name=dbName]": "clearWarnings"
+      },
 
-            templateHelpers: {},
+      templateHelpers: {},
 
-            serializeData: function () {
-                return this.model;
-            },
+      serializeData: function() {
+        return this.model;
+      },
 
-            // event handlers
+      // event handlers
 
-            onCommitSimple: function (e) {
-                e.preventDefault();
+      onCommitSimple: function(e) {
+        e.preventDefault();
 
-                if (this.validateSimpleForm()) {
-                    var options = $("#simple-edit form").serializeArray();
-                    // alert(JSON.stringify(options));
-                    fui.models.fusekiServer.updateOrCreateDataset(null, options)
-                        .done(this.showDataManagementPage)
-                        .fail(this.showFailureMessage);
-                }
-            },
+        if(this.validateSimpleForm()) {
+          var options = $("#simple-edit form").serializeArray();
+          // alert(JSON.stringify(options));
+          fui.models.fusekiServer.updateOrCreateDataset(null, options)
+            .done(this.showDataManagementPage)
+            .fail(this.showFailureMessage);
+        }
+      },
 
 //      onCommitUpload: function( e ) {
 //        e.preventDefault();
@@ -56,44 +56,44 @@ define(
 //        }
 //      },
 //
-            showDataManagementPage: function (e) {
-                location = "?tab=datasets";
-            },
+      showDataManagementPage: function(e) {
+        location = "?tab=datasets";
+      },
 
-            /** Todo: need to do a better job of responding to errors */
-            showFailureMessage: function (jqXHR, textStatus, errorThrown) {
-                $(".errorOutput").html(sprintf("<p class='has-error'>Sorry, that didn't work because:</p><pre>%s</pre>", errorThrown || textStatus));
-            },
+      /** Todo: need to do a better job of responding to errors */
+      showFailureMessage: function(jqXHR, textStatus, errorThrown) {
+        $(".errorOutput").html(sprintf("<p class='has-error'>Sorry, that didn't work because:</p><pre>%s</pre>", errorThrown || textStatus));
+      },
 
-            /** Clear current warning states */
-            clearWarnings: function () {
-                this.clearValidation();
-                $(".errorOutput").empty();
-            },
+      /** Clear current warning states */
+      clearWarnings: function() {
+        this.clearValidation();
+        $(".errorOutput").empty();
+      },
 
-            // validation
+      // validation
 
-            validateSimpleForm: function () {
-                this.clearValidation();
+      validateSimpleForm: function() {
+        this.clearValidation();
 
-                if (!$("input[name=dbName]").val()) {
-                    $(".dbNameValidation").removeClass("hidden")
-                        .parents(".form-group")
-                        .addClass("has-error");
-                    return false;
-                }
+        if(!$("input[name=dbName]").val()) {
+          $(".dbNameValidation").removeClass("hidden")
+            .parents(".form-group")
+            .addClass("has-error");
+          return false;
+        }
 
-                return true;
-            },
+        return true;
+      },
 
-            clearValidation: function () {
-                $(".has-error").removeClass("has-error");
-                $(".has-warning").removeClass("has-warning");
-            }
+      clearValidation: function() {
+        $(".has-error").removeClass("has-error");
+        $(".has-warning").removeClass("has-warning");
+      }
 
-        });
+    });
 
 
-        return DatasetSimpleCreate;
-    }
+    return DatasetSimpleCreate;
+  }
 );

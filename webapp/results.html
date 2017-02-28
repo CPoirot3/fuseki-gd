@@ -2,160 +2,160 @@
 <html>
 
 <head>
-    <title>知识管理系统</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <link href="css/codemirror.css" rel="stylesheet" media="screen">
-    <link href="css/qonsole.css" rel="stylesheet" media="screen">
-    <link href="css/jquery.dataTables.css" rel="stylesheet" media="screen">
-    <link href="css/fui.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script data-main="js/app/main.rules.js" src="js/lib/require.min.js"></script>
-    <!--[if lt IE 9]>
-    <script src="js/lib/html5shiv.js"></script>
-    <script src="js/lib/respond.min.js"></script>
-    <![endif]-->
+  <title>知识管理系统</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
+  <link href="css/codemirror.css" rel="stylesheet" media="screen">
+  <link href="css/qonsole.css" rel="stylesheet" media="screen">
+  <link href="css/jquery.dataTables.css" rel="stylesheet" media="screen">
+  <link href="css/fui.css" rel="stylesheet" media="screen">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script data-main="js/app/main.rules.js" src="js/lib/require.min.js"></script>
+  <!--[if lt IE 9]>
+  <script src="js/lib/html5shiv.js"></script>
+  <script src="js/lib/respond.min.js"></script>
+  <![endif]-->
 
-    <script>
-       Document.getrea
-    </script>
+  <script>
+    Document.getrea
+  </script>
 </head>
 
 <body>
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="row">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena" />
-                        <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
-                        <div>知识<br/>管理<br/>系统</div>
-                    </a>
-                </div>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="row">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          <img src="images/jena-logo-notext-small.png" alt="Apache Jena logo" title="Apache Jena"/>
+          <!--<div>Apache<br/>Jena<br/><strong>Fuseki</strong></div>-->
+          <div>知识<br/>管理<br/>系统</div>
+        </a>
+      </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                        <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
-                        <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
-                        <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
-                        <!-- JENA-887 not yet implemented
-                    <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
-                    -->
-                        <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="status-indicator">
-                            <div>服务器<br/>状态:</div>
-                        </li>
-                        <li class="status-indicator">
-                            <a class="" href="#admin/server-log.html" id="server-status-light" title="current server status">
-                                <span class="server-up"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </nav>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html"><i class="fa fa-home"></i></a></li>
+          <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
+          <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
+          <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
+          <!-- JENA-887 not yet implemented
+      <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
+      -->
+          <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="status-indicator">
+            <div>服务器<br/>状态:</div>
+          </li>
+          <li class="status-indicator">
+            <a class="" href="#admin/server-log.html" id="server-status-light" title="current server status">
+              <span class="server-up"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</nav>
 
-    <div id="main" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        function randomData() {
-            now = new Date(+now + oneDay);
-            value = value + Math.random() * 21 - 10;
-            return {
-                name: now.toString(),
-                value: [
-                    [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-                    Math.round(value)
-                ]
-            }
-        }
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+  function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+      name: now.toString(),
+      value: [
+        [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+        Math.round(value)
+      ]
+    }
+  }
 
-        var data = [];
-        var now = +new Date(1997, 9, 3);
-        var oneDay = 24 * 3600 * 1000;
-        var value = Math.random() * 1000;
-        for (var i = 0; i < 1000; i++) {
-            data.push(randomData());
-        }
+  var data = [];
+  var now = +new Date(1997, 9, 3);
+  var oneDay = 24 * 3600 * 1000;
+  var value = Math.random() * 1000;
+  for(var i = 0; i < 1000; i++) {
+    data.push(randomData());
+  }
 
-        option = {
-            title: {
-                text: '动态数据 + 时间坐标轴'
-            },
-            tooltip: {
-                trigger: 'axis',
-                formatter: function (params) {
-                    params = params[0];
-                    var date = new Date(params.name);
-                    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-                },
-                axisPointer: {
-                    animation: false
-                }
-            },
-            xAxis: {
-                type: 'time',
-                splitLine: {
-                    show: false
-                }
-            },
-            yAxis: {
-                type: 'value',
-                boundaryGap: [0, '100%'],
-                splitLine: {
-                    show: false
-                }
-            },
-            series: [{
-                name: '模拟数据',
-                type: 'line',
-                showSymbol: false,
-                hoverAnimation: false,
-                data: data
-            }]
-        };
+  option = {
+    title: {
+      text: '动态数据 + 时间坐标轴'
+    },
+    tooltip: {
+      trigger: 'axis',
+      formatter: function(params) {
+        params = params[0];
+        var date = new Date(params.name);
+        return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+      },
+      axisPointer: {
+        animation: false
+      }
+    },
+    xAxis: {
+      type: 'time',
+      splitLine: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      boundaryGap: [0, '100%'],
+      splitLine: {
+        show: false
+      }
+    },
+    series: [{
+      name: '模拟数据',
+      type: 'line',
+      showSymbol: false,
+      hoverAnimation: false,
+      data: data
+    }]
+  };
 
-        setInterval(function () {
+  setInterval(function() {
 
-            for (var i = 0; i < 5; i++) {
-                data.shift();
-                data.push(randomData());
-            }
+    for(var i = 0; i < 5; i++) {
+      data.shift();
+      data.push(randomData());
+    }
 
-            myChart.setOption({
-                series: [{
-                    data: data
-                }]
-            });
-        }, 1000);
-
-
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+    myChart.setOption({
+      series: [{
+        data: data
+      }]
+    });
+  }, 1000);
 
 
-    </script>
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+
+
+</script>
 </body>
 
 </html>

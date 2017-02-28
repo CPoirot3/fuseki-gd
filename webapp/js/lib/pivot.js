@@ -1,14 +1,23 @@
 (function() {
   var callWithJQuery,
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
+    __indexOf = [].indexOf || function(item) {
+        for(var i = 0, l = this.length; i < l; i++) {
+          if(i in this && this[i] === item) return i;
+        }
+        return -1;
+      },
     __slice = [].slice,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __bind = function(fn, me) {
+      return function() {
+        return fn.apply(me, arguments);
+      };
+    },
     __hasProp = {}.hasOwnProperty;
 
   callWithJQuery = function(pivotModule) {
-    if (typeof exports === "object" && typeof module === "object") {
+    if(typeof exports === "object" && typeof module === "object") {
       return pivotModule(require("jquery"));
-    } else if (typeof define === "function" && define.amd) {
+    } else if(typeof define === "function" && define.amd) {
       return define(["jquery"], pivotModule);
     } else {
       return pivotModule(jQuery);
@@ -18,7 +27,7 @@
   callWithJQuery(function($) {
 
     /*
-    Utilities
+     Utilities
      */
     var PivotData, addSeparators, aggregatorTemplates, aggregators, dayNamesEn, derivers, locales, mthNamesEn, naturalSort, numberFormat, pivotTableRenderer, renderers, usFmt, usFmtInt, usFmtPct, zeroPad;
     addSeparators = function(nStr, thousandsSep, decimalSep) {
@@ -28,7 +37,7 @@
       x1 = x[0];
       x2 = x.length > 1 ? decimalSep + x[1] : '';
       rgx = /(\d+)(\d{3})/;
-      while (rgx.test(x1)) {
+      while(rgx.test(x1)) {
         x1 = x1.replace(rgx, '$1' + thousandsSep + '$2');
       }
       return x1 + x2;
@@ -47,10 +56,10 @@
       opts = $.extend(defaults, opts);
       return function(x) {
         var result;
-        if (isNaN(x) || !isFinite(x)) {
+        if(isNaN(x) || !isFinite(x)) {
           return "";
         }
-        if (x === 0 && !opts.showZero) {
+        if(x === 0 && !opts.showZero) {
           return "";
         }
         result = addSeparators((opts.scaler * x).toFixed(opts.digitsAfterDecimal), opts.thousandsSep, opts.decimalSep);
@@ -68,7 +77,7 @@
     });
     aggregatorTemplates = {
       count: function(formatter) {
-        if (formatter == null) {
+        if(formatter == null) {
           formatter = usFmtInt;
         }
         return function() {
@@ -87,7 +96,7 @@
         };
       },
       countUnique: function(formatter) {
-        if (formatter == null) {
+        if(formatter == null) {
           formatter = usFmtInt;
         }
         return function(_arg) {
@@ -98,7 +107,7 @@
               uniq: [],
               push: function(record) {
                 var _ref;
-                if (_ref = record[attr], __indexOf.call(this.uniq, _ref) < 0) {
+                if(_ref = record[attr], __indexOf.call(this.uniq, _ref) < 0) {
                   return this.uniq.push(record[attr]);
                 }
               },
@@ -120,7 +129,7 @@
               uniq: [],
               push: function(record) {
                 var _ref;
-                if (_ref = record[attr], __indexOf.call(this.uniq, _ref) < 0) {
+                if(_ref = record[attr], __indexOf.call(this.uniq, _ref) < 0) {
                   return this.uniq.push(record[attr]);
                 }
               },
@@ -136,7 +145,7 @@
         };
       },
       sum: function(formatter) {
-        if (formatter == null) {
+        if(formatter == null) {
           formatter = usFmt;
         }
         return function(_arg) {
@@ -146,7 +155,7 @@
             return {
               sum: 0,
               push: function(record) {
-                if (!isNaN(parseFloat(record[attr]))) {
+                if(!isNaN(parseFloat(record[attr]))) {
                   return this.sum += parseFloat(record[attr]);
                 }
               },
@@ -160,7 +169,7 @@
         };
       },
       average: function(formatter) {
-        if (formatter == null) {
+        if(formatter == null) {
           formatter = usFmt;
         }
         return function(_arg) {
@@ -171,7 +180,7 @@
               sum: 0,
               len: 0,
               push: function(record) {
-                if (!isNaN(parseFloat(record[attr]))) {
+                if(!isNaN(parseFloat(record[attr]))) {
                   this.sum += parseFloat(record[attr]);
                   return this.len++;
                 }
@@ -186,7 +195,7 @@
         };
       },
       sumOverSum: function(formatter) {
-        if (formatter == null) {
+        if(formatter == null) {
           formatter = usFmt;
         }
         return function(_arg) {
@@ -197,10 +206,10 @@
               sumNum: 0,
               sumDenom: 0,
               push: function(record) {
-                if (!isNaN(parseFloat(record[num]))) {
+                if(!isNaN(parseFloat(record[num]))) {
                   this.sumNum += parseFloat(record[num]);
                 }
-                if (!isNaN(parseFloat(record[denom]))) {
+                if(!isNaN(parseFloat(record[denom]))) {
                   return this.sumDenom += parseFloat(record[denom]);
                 }
               },
@@ -214,10 +223,10 @@
         };
       },
       sumOverSumBound80: function(upper, formatter) {
-        if (upper == null) {
+        if(upper == null) {
           upper = true;
         }
-        if (formatter == null) {
+        if(formatter == null) {
           formatter = usFmt;
         }
         return function(_arg) {
@@ -228,10 +237,10 @@
               sumNum: 0,
               sumDenom: 0,
               push: function(record) {
-                if (!isNaN(parseFloat(record[num]))) {
+                if(!isNaN(parseFloat(record[num]))) {
                   this.sumNum += parseFloat(record[num]);
                 }
-                if (!isNaN(parseFloat(record[denom]))) {
+                if(!isNaN(parseFloat(record[denom]))) {
                   return this.sumDenom += parseFloat(record[denom]);
                 }
               },
@@ -247,10 +256,10 @@
         };
       },
       fractionOf: function(wrapped, type, formatter) {
-        if (type == null) {
+        if(type == null) {
           type = "total";
         }
-        if (formatter == null) {
+        if(formatter == null) {
           formatter = usFmtPct;
         }
         return function() {
@@ -343,20 +352,20 @@
         };
       },
       dateFormat: function(col, formatString, mthNames, dayNames) {
-        if (mthNames == null) {
+        if(mthNames == null) {
           mthNames = mthNamesEn;
         }
-        if (dayNames == null) {
+        if(dayNames == null) {
           dayNames = dayNamesEn;
         }
         return function(record) {
           var date;
           date = new Date(Date.parse(record[col]));
-          if (isNaN(date)) {
+          if(isNaN(date)) {
             return "";
           }
           return formatString.replace(/%(.)/g, function(m, p) {
-            switch (p) {
+            switch(p) {
               case "y":
                 return date.getFullYear();
               case "m":
@@ -388,30 +397,30 @@
         rx = /(\d+)|(\D+)/g;
         rd = /\d/;
         rz = /^0/;
-        if (typeof as === "number" || typeof bs === "number") {
-          if (isNaN(as)) {
+        if(typeof as === "number" || typeof bs === "number") {
+          if(isNaN(as)) {
             return 1;
           }
-          if (isNaN(bs)) {
+          if(isNaN(bs)) {
             return -1;
           }
           return as - bs;
         }
         a = String(as).toLowerCase();
         b = String(bs).toLowerCase();
-        if (a === b) {
+        if(a === b) {
           return 0;
         }
-        if (!(rd.test(a) && rd.test(b))) {
+        if(!(rd.test(a) && rd.test(b))) {
           return (a > b ? 1 : -1);
         }
         a = a.match(rx);
         b = b.match(rx);
-        while (a.length && b.length) {
+        while(a.length && b.length) {
           a1 = a.shift();
           b1 = b.shift();
-          if (a1 !== b1) {
-            if (rd.test(a1) && rd.test(b1)) {
+          if(a1 !== b1) {
+            if(rd.test(a1) && rd.test(b1)) {
               return a1.replace(rz, ".0") - b1.replace(rz, ".0");
             } else {
               return (a1 > b1 ? 1 : -1);
@@ -432,7 +441,7 @@
     };
 
     /*
-    Data Model class
+     Data Model class
      */
     PivotData = (function() {
       function PivotData(input, opts) {
@@ -456,7 +465,7 @@
         this.sorted = false;
         PivotData.forEachRecord(input, opts.derivedAttributes, (function(_this) {
           return function(record) {
-            if (opts.filter(record)) {
+            if(opts.filter(record)) {
               return _this.processRecord(record);
             }
           };
@@ -465,33 +474,33 @@
 
       PivotData.forEachRecord = function(input, derivedAttributes, f) {
         var addRecord, compactRecord, i, j, k, record, tblCols, _i, _len, _ref, _results, _results1;
-        if ($.isEmptyObject(derivedAttributes)) {
+        if($.isEmptyObject(derivedAttributes)) {
           addRecord = f;
         } else {
           addRecord = function(record) {
             var k, v, _ref;
-            for (k in derivedAttributes) {
+            for(k in derivedAttributes) {
               v = derivedAttributes[k];
               record[k] = (_ref = v(record)) != null ? _ref : record[k];
             }
             return f(record);
           };
         }
-        if ($.isFunction(input)) {
+        if($.isFunction(input)) {
           return input(addRecord);
-        } else if ($.isArray(input)) {
-          if ($.isArray(input[0])) {
+        } else if($.isArray(input)) {
+          if($.isArray(input[0])) {
             _results = [];
-            for (i in input) {
-              if (!__hasProp.call(input, i)) continue;
+            for(i in input) {
+              if(!__hasProp.call(input, i)) continue;
               compactRecord = input[i];
-              if (!(i > 0)) {
+              if(!(i > 0)) {
                 continue;
               }
               record = {};
               _ref = input[0];
-              for (j in _ref) {
-                if (!__hasProp.call(_ref, j)) continue;
+              for(j in _ref) {
+                if(!__hasProp.call(_ref, j)) continue;
                 k = _ref[j];
                 record[k] = compactRecord[j];
               }
@@ -500,13 +509,13 @@
             return _results;
           } else {
             _results1 = [];
-            for (_i = 0, _len = input.length; _i < _len; _i++) {
+            for(_i = 0, _len = input.length; _i < _len; _i++) {
               record = input[_i];
               _results1.push(addRecord(record));
             }
             return _results1;
           }
-        } else if (input instanceof jQuery) {
+        } else if(input instanceof jQuery) {
           tblCols = [];
           $("thead > tr > th", input).each(function(i) {
             return tblCols.push($(this).text());
@@ -541,7 +550,7 @@
       };
 
       PivotData.prototype.sortKeys = function() {
-        if (!this.sorted) {
+        if(!this.sorted) {
           this.rowKeys.sort(this.arrSort);
           this.colKeys.sort(this.arrSort);
         }
@@ -563,37 +572,37 @@
         colKey = [];
         rowKey = [];
         _ref = this.colAttrs;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        for(_i = 0, _len = _ref.length; _i < _len; _i++) {
           x = _ref[_i];
           colKey.push((_ref1 = record[x]) != null ? _ref1 : "null");
         }
         _ref2 = this.rowAttrs;
-        for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+        for(_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
           x = _ref2[_j];
           rowKey.push((_ref3 = record[x]) != null ? _ref3 : "null");
         }
         flatRowKey = rowKey.join(String.fromCharCode(0));
         flatColKey = colKey.join(String.fromCharCode(0));
         this.allTotal.push(record);
-        if (rowKey.length !== 0) {
-          if (!this.rowTotals[flatRowKey]) {
+        if(rowKey.length !== 0) {
+          if(!this.rowTotals[flatRowKey]) {
             this.rowKeys.push(rowKey);
             this.rowTotals[flatRowKey] = this.aggregator(this, rowKey, []);
           }
           this.rowTotals[flatRowKey].push(record);
         }
-        if (colKey.length !== 0) {
-          if (!this.colTotals[flatColKey]) {
+        if(colKey.length !== 0) {
+          if(!this.colTotals[flatColKey]) {
             this.colKeys.push(colKey);
             this.colTotals[flatColKey] = this.aggregator(this, [], colKey);
           }
           this.colTotals[flatColKey].push(record);
         }
-        if (colKey.length !== 0 && rowKey.length !== 0) {
-          if (!this.tree[flatRowKey]) {
+        if(colKey.length !== 0 && rowKey.length !== 0) {
+          if(!this.tree[flatRowKey]) {
             this.tree[flatRowKey] = {};
           }
-          if (!this.tree[flatRowKey][flatColKey]) {
+          if(!this.tree[flatRowKey][flatColKey]) {
             this.tree[flatRowKey][flatColKey] = this.aggregator(this, rowKey, colKey);
           }
           return this.tree[flatRowKey][flatColKey].push(record);
@@ -604,23 +613,23 @@
         var agg, flatColKey, flatRowKey;
         flatRowKey = rowKey.join(String.fromCharCode(0));
         flatColKey = colKey.join(String.fromCharCode(0));
-        if (rowKey.length === 0 && colKey.length === 0) {
+        if(rowKey.length === 0 && colKey.length === 0) {
           agg = this.allTotal;
-        } else if (rowKey.length === 0) {
+        } else if(rowKey.length === 0) {
           agg = this.colTotals[flatColKey];
-        } else if (colKey.length === 0) {
+        } else if(colKey.length === 0) {
           agg = this.rowTotals[flatRowKey];
         } else {
           agg = this.tree[flatRowKey][flatColKey];
         }
         return agg != null ? agg : {
-          value: (function() {
-            return null;
-          }),
-          format: function() {
-            return "";
-          }
-        };
+            value: (function() {
+              return null;
+            }),
+            format: function() {
+              return "";
+            }
+          };
       };
 
       return PivotData;
@@ -628,7 +637,7 @@
     })();
 
     /*
-    Default Renderer for hierarchical table layout
+     Default Renderer for hierarchical table layout
      */
     pivotTableRenderer = function(pivotData, opts) {
       var aggregator, c, colAttrs, colKey, colKeys, defaults, i, j, r, result, rowAttrs, rowKey, rowKeys, spanSize, td, th, totalAggregator, tr, txt, val, x;
@@ -646,37 +655,37 @@
       result.className = "pvtTable";
       spanSize = function(arr, i, j) {
         var len, noDraw, stop, x, _i, _j;
-        if (i !== 0) {
+        if(i !== 0) {
           noDraw = true;
-          for (x = _i = 0; 0 <= j ? _i <= j : _i >= j; x = 0 <= j ? ++_i : --_i) {
-            if (arr[i - 1][x] !== arr[i][x]) {
+          for(x = _i = 0; 0 <= j ? _i <= j : _i >= j; x = 0 <= j ? ++_i : --_i) {
+            if(arr[i - 1][x] !== arr[i][x]) {
               noDraw = false;
             }
           }
-          if (noDraw) {
+          if(noDraw) {
             return -1;
           }
         }
         len = 0;
-        while (i + len < arr.length) {
+        while(i + len < arr.length) {
           stop = false;
-          for (x = _j = 0; 0 <= j ? _j <= j : _j >= j; x = 0 <= j ? ++_j : --_j) {
-            if (arr[i][x] !== arr[i + len][x]) {
+          for(x = _j = 0; 0 <= j ? _j <= j : _j >= j; x = 0 <= j ? ++_j : --_j) {
+            if(arr[i][x] !== arr[i + len][x]) {
               stop = true;
             }
           }
-          if (stop) {
+          if(stop) {
             break;
           }
           len++;
         }
         return len;
       };
-      for (j in colAttrs) {
-        if (!__hasProp.call(colAttrs, j)) continue;
+      for(j in colAttrs) {
+        if(!__hasProp.call(colAttrs, j)) continue;
         c = colAttrs[j];
         tr = document.createElement("tr");
-        if (parseInt(j) === 0 && rowAttrs.length !== 0) {
+        if(parseInt(j) === 0 && rowAttrs.length !== 0) {
           th = document.createElement("th");
           th.setAttribute("colspan", rowAttrs.length);
           th.setAttribute("rowspan", colAttrs.length);
@@ -686,22 +695,22 @@
         th.className = "pvtAxisLabel";
         th.textContent = c;
         tr.appendChild(th);
-        for (i in colKeys) {
-          if (!__hasProp.call(colKeys, i)) continue;
+        for(i in colKeys) {
+          if(!__hasProp.call(colKeys, i)) continue;
           colKey = colKeys[i];
           x = spanSize(colKeys, parseInt(i), parseInt(j));
-          if (x !== -1) {
+          if(x !== -1) {
             th = document.createElement("th");
             th.className = "pvtColLabel";
             th.textContent = colKey[j];
             th.setAttribute("colspan", x);
-            if (parseInt(j) === colAttrs.length - 1 && rowAttrs.length !== 0) {
+            if(parseInt(j) === colAttrs.length - 1 && rowAttrs.length !== 0) {
               th.setAttribute("rowspan", 2);
             }
             tr.appendChild(th);
           }
         }
-        if (parseInt(j) === 0) {
+        if(parseInt(j) === 0) {
           th = document.createElement("th");
           th.className = "pvtTotalLabel";
           th.innerHTML = opts.localeStrings.totals;
@@ -710,10 +719,10 @@
         }
         result.appendChild(tr);
       }
-      if (rowAttrs.length !== 0) {
+      if(rowAttrs.length !== 0) {
         tr = document.createElement("tr");
-        for (i in rowAttrs) {
-          if (!__hasProp.call(rowAttrs, i)) continue;
+        for(i in rowAttrs) {
+          if(!__hasProp.call(rowAttrs, i)) continue;
           r = rowAttrs[i];
           th = document.createElement("th");
           th.className = "pvtAxisLabel";
@@ -721,34 +730,34 @@
           tr.appendChild(th);
         }
         th = document.createElement("th");
-        if (colAttrs.length === 0) {
+        if(colAttrs.length === 0) {
           th.className = "pvtTotalLabel";
           th.innerHTML = opts.localeStrings.totals;
         }
         tr.appendChild(th);
         result.appendChild(tr);
       }
-      for (i in rowKeys) {
-        if (!__hasProp.call(rowKeys, i)) continue;
+      for(i in rowKeys) {
+        if(!__hasProp.call(rowKeys, i)) continue;
         rowKey = rowKeys[i];
         tr = document.createElement("tr");
-        for (j in rowKey) {
-          if (!__hasProp.call(rowKey, j)) continue;
+        for(j in rowKey) {
+          if(!__hasProp.call(rowKey, j)) continue;
           txt = rowKey[j];
           x = spanSize(rowKeys, parseInt(i), parseInt(j));
-          if (x !== -1) {
+          if(x !== -1) {
             th = document.createElement("th");
             th.className = "pvtRowLabel";
             th.textContent = txt;
             th.setAttribute("rowspan", x);
-            if (parseInt(j) === rowAttrs.length - 1 && colAttrs.length !== 0) {
+            if(parseInt(j) === rowAttrs.length - 1 && colAttrs.length !== 0) {
               th.setAttribute("colspan", 2);
             }
             tr.appendChild(th);
           }
         }
-        for (j in colKeys) {
-          if (!__hasProp.call(colKeys, j)) continue;
+        for(j in colKeys) {
+          if(!__hasProp.call(colKeys, j)) continue;
           colKey = colKeys[j];
           aggregator = pivotData.getAggregator(rowKey, colKey);
           val = aggregator.value();
@@ -774,8 +783,8 @@
       th.innerHTML = opts.localeStrings.totals;
       th.setAttribute("colspan", rowAttrs.length + (colAttrs.length === 0 ? 0 : 1));
       tr.appendChild(th);
-      for (j in colKeys) {
-        if (!__hasProp.call(colKeys, j)) continue;
+      for(j in colKeys) {
+        if(!__hasProp.call(colKeys, j)) continue;
         colKey = colKeys[j];
         totalAggregator = pivotData.getAggregator([], colKey);
         val = totalAggregator.value();
@@ -800,7 +809,7 @@
     };
 
     /*
-    Pivot Table core: create PivotData object and call Renderer on it
+     Pivot Table core: create PivotData object and call Renderer on it
      */
     $.fn.pivot = function(input, opts) {
       var defaults, e, pivotData, result, x;
@@ -823,36 +832,36 @@
         pivotData = new PivotData(input, opts);
         try {
           result = opts.renderer(pivotData, opts.rendererOptions);
-        } catch (_error) {
+        } catch(_error) {
           e = _error;
-          if (typeof console !== "undefined" && console !== null) {
+          if(typeof console !== "undefined" && console !== null) {
             console.error(e.stack);
           }
           result = $("<span>").html(opts.localeStrings.renderError);
         }
-      } catch (_error) {
+      } catch(_error) {
         e = _error;
-        if (typeof console !== "undefined" && console !== null) {
+        if(typeof console !== "undefined" && console !== null) {
           console.error(e.stack);
         }
         result = $("<span>").html(opts.localeStrings.computeError);
       }
       x = this[0];
-      while (x.hasChildNodes()) {
+      while(x.hasChildNodes()) {
         x.removeChild(x.lastChild);
       }
       return this.append(result);
     };
 
     /*
-    Pivot Table UI: calls Pivot Table core above with options set by user
+     Pivot Table UI: calls Pivot Table core above with options set by user
      */
     $.fn.pivotUI = function(input, inputOpts, overwrite, locale) {
       var a, aggregator, attrLength, axisValues, c, colList, defaults, e, existingOpts, i, initialRender, k, opts, pivotTable, refresh, refreshDelayed, renderer, rendererControl, shownAttributes, tblCols, tr1, tr2, uiTable, unusedAttrsVerticalAutoOverride, x, _fn, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3, _ref4;
-      if (overwrite == null) {
+      if(overwrite == null) {
         overwrite = false;
       }
-      if (locale == null) {
+      if(locale == null) {
         locale = "en";
       }
       defaults = {
@@ -877,7 +886,7 @@
         localeStrings: locales[locale].localeStrings
       };
       existingOpts = this.data("pivotUIOptions");
-      if ((existingOpts == null) || overwrite) {
+      if((existingOpts == null) || overwrite) {
         opts = $.extend(defaults, inputOpts);
       } else {
         opts = existingOpts;
@@ -888,37 +897,37 @@
           var _ref, _results;
           _ref = input[0];
           _results = [];
-          for (k in _ref) {
-            if (!__hasProp.call(_ref, k)) continue;
+          for(k in _ref) {
+            if(!__hasProp.call(_ref, k)) continue;
             _results.push(k);
           }
           return _results;
         })();
         _ref = opts.derivedAttributes;
-        for (c in _ref) {
-          if (!__hasProp.call(_ref, c)) continue;
-          if ((__indexOf.call(tblCols, c) < 0)) {
+        for(c in _ref) {
+          if(!__hasProp.call(_ref, c)) continue;
+          if((__indexOf.call(tblCols, c) < 0)) {
             tblCols.push(c);
           }
         }
         axisValues = {};
-        for (_i = 0, _len = tblCols.length; _i < _len; _i++) {
+        for(_i = 0, _len = tblCols.length; _i < _len; _i++) {
           x = tblCols[_i];
           axisValues[x] = {};
         }
         PivotData.forEachRecord(input, opts.derivedAttributes, function(record) {
           var v, _base, _results;
           _results = [];
-          for (k in record) {
-            if (!__hasProp.call(record, k)) continue;
+          for(k in record) {
+            if(!__hasProp.call(record, k)) continue;
             v = record[k];
-            if (!(opts.filter(record))) {
+            if(!(opts.filter(record))) {
               continue;
             }
-            if (v == null) {
+            if(v == null) {
               v = "null";
             }
-            if ((_base = axisValues[k])[v] == null) {
+            if((_base = axisValues[k])[v] == null) {
               _base[v] = 0;
             }
             _results.push(axisValues[k][v]++);
@@ -931,32 +940,32 @@
           return refresh();
         });
         _ref1 = opts.renderers;
-        for (x in _ref1) {
-          if (!__hasProp.call(_ref1, x)) continue;
+        for(x in _ref1) {
+          if(!__hasProp.call(_ref1, x)) continue;
           $("<option>").val(x).html(x).appendTo(renderer);
         }
         colList = $("<td class='pvtAxisContainer pvtUnused'>");
         shownAttributes = (function() {
           var _j, _len1, _results;
           _results = [];
-          for (_j = 0, _len1 = tblCols.length; _j < _len1; _j++) {
+          for(_j = 0, _len1 = tblCols.length; _j < _len1; _j++) {
             c = tblCols[_j];
-            if (__indexOf.call(opts.hiddenAttributes, c) < 0) {
+            if(__indexOf.call(opts.hiddenAttributes, c) < 0) {
               _results.push(c);
             }
           }
           return _results;
         })();
         unusedAttrsVerticalAutoOverride = false;
-        if (opts.unusedAttrsVertical === "auto") {
+        if(opts.unusedAttrsVertical === "auto") {
           attrLength = 0;
-          for (_j = 0, _len1 = shownAttributes.length; _j < _len1; _j++) {
+          for(_j = 0, _len1 = shownAttributes.length; _j < _len1; _j++) {
             a = shownAttributes[_j];
             attrLength += a.length;
           }
           unusedAttrsVerticalAutoOverride = attrLength > 120;
         }
-        if (opts.unusedAttrsVertical === true || unusedAttrsVerticalAutoOverride) {
+        if(opts.unusedAttrsVertical === true || unusedAttrsVerticalAutoOverride) {
           colList.addClass('pvtVertList');
         } else {
           colList.addClass('pvtHorizList');
@@ -966,7 +975,7 @@
           keys = (function() {
             var _results;
             _results = [];
-            for (k in axisValues[c]) {
+            for(k in axisValues[c]) {
               _results.push(k);
             }
             return _results;
@@ -974,7 +983,7 @@
           hasExcludedItem = false;
           valueList = $("<div>").addClass('pvtFilterBox').hide();
           valueList.append($("<h4>").text("" + c + " (" + keys.length + ")"));
-          if (keys.length > opts.menuLimit) {
+          if(keys.length > opts.menuLimit) {
             valueList.append($("<p>").html(opts.localeStrings.tooMany));
           } else {
             btns = $("<p>").appendTo(valueList);
@@ -994,7 +1003,7 @@
               return $(this).parents(".pvtFilterBox").find('label span').each(function() {
                 var testString;
                 testString = $(this).text().toLowerCase().indexOf(filter);
-                if (testString !== -1) {
+                if(testString !== -1) {
                   return $(this).parent().show();
                 } else {
                   return $(this).parent().hide();
@@ -1003,7 +1012,7 @@
             }));
             checkContainer = $("<div>").addClass("pvtCheckContainer").appendTo(valueList);
             _ref2 = keys.sort(naturalSort);
-            for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+            for(_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
               k = _ref2[_k];
               v = axisValues[c][k];
               filterItem = $("<label>");
@@ -1017,12 +1026,12 @@
           updateFilter = function() {
             var unselectedCount;
             unselectedCount = $(valueList).find("[type='checkbox']").length - $(valueList).find("[type='checkbox']:checked").length;
-            if (unselectedCount > 0) {
+            if(unselectedCount > 0) {
               attrElem.addClass("pvtFilteredAttribute");
             } else {
               attrElem.removeClass("pvtFilteredAttribute");
             }
-            if (keys.length > opts.menuLimit) {
+            if(keys.length > opts.menuLimit) {
               return valueList.toggle();
             } else {
               return valueList.toggle(0, refresh);
@@ -1041,13 +1050,13 @@
           };
           triangleLink = $("<span class='pvtTriangle'>").html(" &#x25BE;").bind("click", showFilterList);
           attrElem = $("<li class='axis_" + i + "'>").append($("<span class='pvtAttr'>").text(c).data("attrName", c).append(triangleLink));
-          if (hasExcludedItem) {
+          if(hasExcludedItem) {
             attrElem.addClass('pvtFilteredAttribute');
           }
           colList.append(attrElem).append(valueList);
           return attrElem.bind("dblclick", showFilterList);
         };
-        for (i in shownAttributes) {
+        for(i in shownAttributes) {
           c = shownAttributes[i];
           _fn(c);
         }
@@ -1056,8 +1065,8 @@
           return refresh();
         });
         _ref2 = opts.aggregators;
-        for (x in _ref2) {
-          if (!__hasProp.call(_ref2, x)) continue;
+        for(x in _ref2) {
+          if(!__hasProp.call(_ref2, x)) continue;
           aggregator.append($("<option>").val(x).html(x));
         }
         $("<td class='pvtVals'>").appendTo(tr1).append(aggregator).append($("<br>"));
@@ -1065,7 +1074,7 @@
         tr2 = $("<tr>").appendTo(uiTable);
         tr2.append($("<td valign='top' class='pvtAxisContainer pvtRows'>"));
         pivotTable = $("<td valign='top' class='pvtRendererArea'>").appendTo(tr2);
-        if (opts.unusedAttrsVertical === true || unusedAttrsVerticalAutoOverride) {
+        if(opts.unusedAttrsVertical === true || unusedAttrsVerticalAutoOverride) {
           uiTable.find('tr:nth-child(1)').prepend(rendererControl);
           uiTable.find('tr:nth-child(2)').prepend(colList);
         } else {
@@ -1073,19 +1082,19 @@
         }
         this.html(uiTable);
         _ref3 = opts.cols;
-        for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
+        for(_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
           x = _ref3[_k];
           this.find(".pvtCols").append(this.find(".axis_" + (shownAttributes.indexOf(x))));
         }
         _ref4 = opts.rows;
-        for (_l = 0, _len3 = _ref4.length; _l < _len3; _l++) {
+        for(_l = 0, _len3 = _ref4.length; _l < _len3; _l++) {
           x = _ref4[_l];
           this.find(".pvtRows").append(this.find(".axis_" + (shownAttributes.indexOf(x))));
         }
-        if (opts.aggregatorName != null) {
+        if(opts.aggregatorName != null) {
           this.find(".pvtAggregator").val(opts.aggregatorName);
         }
-        if (opts.rendererName != null) {
+        if(opts.rendererName != null) {
           this.find(".pvtRenderer").val(opts.rendererName);
         }
         initialRender = true;
@@ -1108,29 +1117,29 @@
               return subopts.cols.push($(this).data("attrName"));
             });
             _this.find(".pvtVals select.pvtAttrDropdown").each(function() {
-              if (numInputsToProcess === 0) {
+              if(numInputsToProcess === 0) {
                 return $(this).remove();
               } else {
                 numInputsToProcess--;
-                if ($(this).val() !== "") {
+                if($(this).val() !== "") {
                   return vals.push($(this).val());
                 }
               }
             });
-            if (numInputsToProcess !== 0) {
+            if(numInputsToProcess !== 0) {
               pvtVals = _this.find(".pvtVals");
-              for (x = _m = 0; 0 <= numInputsToProcess ? _m < numInputsToProcess : _m > numInputsToProcess; x = 0 <= numInputsToProcess ? ++_m : --_m) {
+              for(x = _m = 0; 0 <= numInputsToProcess ? _m < numInputsToProcess : _m > numInputsToProcess; x = 0 <= numInputsToProcess ? ++_m : --_m) {
                 newDropdown = $("<select class='pvtAttrDropdown'>").append($("<option>")).bind("change", function() {
                   return refresh();
                 });
-                for (_n = 0, _len4 = shownAttributes.length; _n < _len4; _n++) {
+                for(_n = 0, _len4 = shownAttributes.length; _n < _len4; _n++) {
                   attr = shownAttributes[_n];
                   newDropdown.append($("<option>").val(attr).text(attr));
                 }
                 pvtVals.append(newDropdown);
               }
             }
-            if (initialRender) {
+            if(initialRender) {
               vals = opts.vals;
               i = 0;
               _this.find(".pvtVals select.pvtAttrDropdown").each(function() {
@@ -1147,7 +1156,7 @@
             _this.find('input.pvtFilter').not(':checked').each(function() {
               var filter;
               filter = $(this).data("filter");
-              if (exclusions[filter[0]] != null) {
+              if(exclusions[filter[0]] != null) {
                 return exclusions[filter[0]].push(filter[1]);
               } else {
                 return exclusions[filter[0]] = [filter[1]];
@@ -1155,12 +1164,12 @@
             });
             subopts.filter = function(record) {
               var excludedItems, _ref6;
-              if (!opts.filter(record)) {
+              if(!opts.filter(record)) {
                 return false;
               }
-              for (k in exclusions) {
+              for(k in exclusions) {
                 excludedItems = exclusions[k];
-                if (_ref6 = "" + record[k], __indexOf.call(excludedItems, _ref6) >= 0) {
+                if(_ref6 = "" + record[k], __indexOf.call(excludedItems, _ref6) >= 0) {
                   return false;
                 }
               }
@@ -1176,7 +1185,7 @@
               rendererName: renderer.val()
             });
             _this.data("pivotUIOptions", pivotUIOptions);
-            if (opts.autoSortUnusedAttrs) {
+            if(opts.autoSortUnusedAttrs) {
               natSort = $.pivotUtilities.naturalSort;
               unusedAttrsContainer = _this.find("td.pvtUnused.pvtAxisContainer");
               $(unusedAttrsContainer).children("li").sort(function(a, b) {
@@ -1184,7 +1193,7 @@
               }).appendTo(unusedAttrsContainer);
             }
             pivotTable.css("opacity", 1);
-            if (opts.onRefresh != null) {
+            if(opts.onRefresh != null) {
               return opts.onRefresh(pivotUIOptions);
             }
           };
@@ -1198,7 +1207,7 @@
         refresh();
         this.find(".pvtAxisContainer").sortable({
           update: function(e, ui) {
-            if (ui.sender == null) {
+            if(ui.sender == null) {
               return refresh();
             }
           },
@@ -1206,9 +1215,9 @@
           items: 'li',
           placeholder: 'pvtPlaceholder'
         });
-      } catch (_error) {
+      } catch(_error) {
         e = _error;
-        if (typeof console !== "undefined" && console !== null) {
+        if(typeof console !== "undefined" && console !== null) {
           console.error(e.stack);
         }
         this.html(opts.localeStrings.uiRenderError);
@@ -1217,11 +1226,11 @@
     };
 
     /*
-    Heatmap post-processing
+     Heatmap post-processing
      */
     $.fn.heatmap = function(scope) {
       var colorGen, heatmapper, i, j, numCols, numRows, _i, _j;
-      if (scope == null) {
+      if(scope == null) {
         scope = "heatmap";
       }
       numRows = this.data("numrows");
@@ -1229,7 +1238,7 @@
       colorGen = function(color, min, max) {
         var hexGen;
         hexGen = (function() {
-          switch (color) {
+          switch(color) {
             case "red":
               return function(hex) {
                 return "ff" + hex + hex;
@@ -1248,7 +1257,7 @@
           var hex, intensity;
           intensity = 255 - Math.round(255 * (x - min) / (max - min));
           hex = intensity.toString(16).split(".")[0];
-          if (hex.length === 1) {
+          if(hex.length === 1) {
             hex = 0 + hex;
           }
           return hexGen(hex);
@@ -1261,7 +1270,7 @@
             return _this.find(scope).each(function() {
               var x;
               x = $(this).data("value");
-              if ((x != null) && isFinite(x)) {
+              if((x != null) && isFinite(x)) {
                 return f(x, $(this));
               }
             });
@@ -1276,17 +1285,17 @@
           });
         };
       })(this);
-      switch (scope) {
+      switch(scope) {
         case "heatmap":
           heatmapper(".pvtVal", "red");
           break;
         case "rowheatmap":
-          for (i = _i = 0; 0 <= numRows ? _i < numRows : _i > numRows; i = 0 <= numRows ? ++_i : --_i) {
+          for(i = _i = 0; 0 <= numRows ? _i < numRows : _i > numRows; i = 0 <= numRows ? ++_i : --_i) {
             heatmapper(".pvtVal.row" + i, "red");
           }
           break;
         case "colheatmap":
-          for (j = _j = 0; 0 <= numCols ? _j < numCols : _j > numCols; j = 0 <= numCols ? ++_j : --_j) {
+          for(j = _j = 0; 0 <= numCols ? _j < numCols : _j > numCols; j = 0 <= numCols ? ++_j : --_j) {
             heatmapper(".pvtVal.col" + j, "red");
           }
       }
@@ -1296,7 +1305,7 @@
     };
 
     /*
-    Barchart post-processing
+     Barchart post-processing
      */
     return $.fn.barchart = function() {
       var barcharter, i, numCols, numRows, _i;
@@ -1309,7 +1318,7 @@
             return _this.find(scope).each(function() {
               var x;
               x = $(this).data("value");
-              if ((x != null) && isFinite(x)) {
+              if((x != null) && isFinite(x)) {
                 return f(x, $(this));
               }
             });
@@ -1350,7 +1359,7 @@
           });
         };
       })(this);
-      for (i = _i = 0; 0 <= numRows ? _i < numRows : _i > numRows; i = 0 <= numRows ? ++_i : --_i) {
+      for(i = _i = 0; 0 <= numRows ? _i < numRows : _i > numRows; i = 0 <= numRows ? ++_i : --_i) {
         barcharter(".pvtVal.row" + i);
       }
       barcharter(".pvtTotal.colTotal");
