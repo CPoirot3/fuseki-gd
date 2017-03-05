@@ -50,10 +50,6 @@
           <li class=""><a href="dataset.html"><i class="fa fa-database"></i> 数据集</a></li>
           <li class=""><a href="manage.html"><i class="fa fa-cogs"></i> 管理数据集 </a></li>
           <li class=""><a href="rules.html"><i class="fa fa-cogs"></i> 规则定义</i></a></li>
-          <!-- JENA-887 not yet implemented
-      <li class=""><a href="services.html"><i class="fa fa-wrench"></i> services</a></li>
-      -->
-          <li class=""><a href="documentation.html"><i class="fa fa-info-circle"></i> 帮助 </a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="status-indicator">
@@ -83,10 +79,10 @@
     </div>
 
     <div>
-      <h2>推理</h2>
+      <h2>目标定义</h2>
       <div class='schema'>
         <form id="formID" role="form">
-          <h3>推理目标</h3>
+          <!--<h3>推理目标</h3>-->
           <div class="form-group">
             <label for="topic">事件主题</label>
             <select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">
@@ -168,6 +164,12 @@
 </div>
 
 <script type="text/javascript">
+  $("#scope").click(function() {
+    $.post('http://localhost:15100/updateScope', function() {
+
+      $("scope").add();
+    });
+  });
 
   var id = 1;
   var resultId = 1;
@@ -175,9 +177,11 @@
     var deduceParams = $('#formID').serialize();
     deduceParams = deduceParams + "&id=" + id;
     console.log(deduceParams);
-    $.post('http://localhost:15100/deduce', deduceParams, function() {
+    $.post('http://localhost:15100/deduce', deduceParams, function(scopesResult) {
+      for (var name in scopesResult["name"]) {
+        console.log(name);
 
-      // 可以做一些渲染
+      }
     });
   });
 
