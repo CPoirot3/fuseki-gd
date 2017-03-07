@@ -16,7 +16,7 @@
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.3/echarts.min.js"></script>-->
   <script src="js/lib/jquery-1.10.2.js"></script>
-  <script src="js/lib/gd/echarts.min.js"></script>
+  <script src="js/gd/echarts.min.js"></script>
   <script src="js/lib/bootstrap.min.js"></script>
 
   <!--[if lt IE 9]>
@@ -73,7 +73,6 @@
   <!-- /container -->
 </nav>
 
-
 <div class="container">
   <table class="row">
     <div class="page-header">
@@ -81,306 +80,162 @@
       <p class="lead"></p>
     </div>
 
-    <div>
-      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        目标定义
-      </button>
+    <!--<button class="btn btn-primary btn-lg hidden" data-toggle="modal" data-target="#myModal">-->
+      <!--目标定义-->
+    <!--</button>-->
+
+  </table>
+
+  <table class="row">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
+      <!--目标定义-->
+      <!--</button>-->
       <!-- 模态框（Modal） -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                &times;
-              </button>
-              <h4 class="modal-title" id="myModalLabel">
-                目标定义
-              </h4>
-            </div>
-            <div class="modal-body">
-              在这里添加一些文本
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-              <button type="button" class="btn btn-primary">提交更改</button>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              映射定义
+            </h4>
+          </div>
+
+          <div class="modal-body">
+            <form id="modal-form" role="form">
+              <div class="form-group">
+                <label for="concept">知识对象</label>
+                <select name="concept" class="form-control" id="concept">
+                  <!--<option>福中路</option>-->
+                  <!--<option>红岭中路</option>-->
+                  <!--<option>翠竹路</option>-->
+                  <!--<option>金田路</option>-->
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="topic">事件主题</label>
+                  <select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">
+                    <option>shenzhen</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button id="close" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button id="confirm" type="button" class="btn btn-primary" data-dismiss="modal">提交更改</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+    <div>
+      <div>
+        <h2 for="knowledgeBase">知识库</h2>
+        <div>
+          <select name="topic" type="input" class="form-control" id="knowledgeBase" placeholder="traffic">
+            <option>Traffic</option>
+          </select>
+        </div>
+        <p></p>
+
+        <button id="targetButton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">映射定义</button>
       </div>
+    </div>
+  </table>
+  <br/>
+  <table class="row">
+    <div id="mainForm" class='schema hidden'>
 
-      <div class='schema'>
-        <form id="formID" role="form">
-          <!--<h3>推理目标</h3>-->
-          <div class="form-group">
-            <label for="knowledgeBase">知识库</label>
-            <select name="topic" type="input" class="form-control" id="knowledgeBase" placeholder="traffic">
-              <option>Traffic</option>
-            </select>
-          </div>
+      <h2 for="formID">推理定义</h2>
+      <form id="formID" role="form">
+        <!--<h3>推理目标</h3>-->
+        <!--<div class="form-group">-->
+        <!--<label for="knowledgeBase">知识库</label>-->
+        <!--<select name="topic" type="input" class="form-control" id="knowledgeBase" placeholder="traffic">-->
+        <!--<option>Traffic</option>-->
+        <!--</select>-->
+        <!--</div>-->
 
-          <div class="form-group">
-            <label for="topic">事件主题</label>
-            <select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">
-              <option>shenzhen</option>
-              <option>test1</option>
-              <option>test2</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="scope">Scope</label>
-            <select name="scope" class="form-control" id="scope">
-              <!--<option>福中路</option>-->
-              <!--<option>红岭中路</option>-->
-              <!--<option>翠竹路</option>-->
-              <!--<option>金田路</option>-->
-            </select>
-          </div>
-          <div>
-            <label for="map-source">映射定义</label>
-            <select name="map-source" type="input" class="form-control" id="map-source" placeholder="">
-              <option>x,y -> Position</option>
-              <option>x,y -> Road</option>
-            </select>
-            <!--<select name="map-knowledge" type="input" class="form-control" id="map-knowledge" placeholder="">-->
-            <!--<option>Position</option>-->
-            <!--<option>Road</option>-->
-            <!--</select>-->
-          </div>
-          <div class="form-group">
-            <label for="severe">严重拥堵定义：缓速车量比例</label>
-            <input name="severe" class="form-control" id="severe">
-          </div>
-          <div class="form-group">
-            <label for="medium">拥堵定义：缓速车量比例</label>
-            <input name="medium" class="form-control" id="medium">
-          </div>
-          <div class="form-group">
-            <label for="slight">轻微拥堵定义：缓速车量比例</label>
-            <input name="slight" class="form-control" id="slight">
-          </div>
-          <div class="form-group">
-            <label for="min">最小数据量</label>
-            <input name="min" type="input" class="form-control" id="min" placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="speed">缓速阈值定义</label>
-            <input name="speed" class="form-control" id="speed">
-          </div>
-          <!--<div class="form-group">-->
-          <!--<input name="target-txt" type="input" class="form-control" id="target-txt" placeholder="">-->
-          <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="topic">事件主题</label>-->
+        <!--<select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">-->
+        <!--<option>shenzhen</option>-->
+        <!--</select>-->
+        <!--</div>-->
 
-          <!-- for file input -->
-          <!--<div class="form-group">-->
-          <!--<label for="exampleInputFile">File input</label>-->
-          <!--<input name="file" type="file" id="exampleInputFile">-->
-          <!--&lt;!&ndash; <p class="help-block">Example block-level help text here.</p> &ndash;&gt;-->
-          <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="scope">Scope</label>-->
+        <!--<select name="scope" class="form-control" id="scope">-->
+        <!--&lt;!&ndash;<option>福中路</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option>红岭中路</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option>翠竹路</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option>金田路</option>&ndash;&gt;-->
+        <!--</select>-->
+        <!--</div>-->
 
-          <!-- <div class="checkbox">
-              <label>
-                  <input type="checkbox"> Check me out  ∀ ∃
-              </label>
-          </div> -->
+        <!--<div class="form-group">-->
+        <!--<label for="map-source">映射定义</label>-->
+        <!--<select name="map-source" type="input" class="form-control" id="map-source" placeholder="">-->
+        <!--<option>shenzhen</option>-->
+        <!--<option>x,y -> Road</option>-->
+        <!--</select>-->
+        <!--&lt;!&ndash;<select name="map-knowledge" type="input" class="form-control" id="map-knowledge" placeholder="">&ndash;&gt;-->
+        <!--&lt;!&ndash;<option>Position</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option>Road</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+        <!--</div>-->
 
-        </form>
-        <button id="deduce" class="btn btn-default">推理</button>
-        <button id="results" class="btn btn-default">结果展示</button>
-        <button id="stop_results" class="btn btn-default">停止展示</button>
-        <div id="main" style="width: 600px;height:400px;"></div>
+        <div class="form-group">
+          <label for="scope">知识实例</label>
+          <select name="scope" class="form-control" id="scope">
+            <!--<option>福中路</option>-->
+            <!--<option>红岭中路</option>-->
+            <!--<option>翠竹路</option>-->
+            <!--<option>金田路</option>-->
+          </select>
+        </div>
 
-        <!-- <div class="row">
-            <a class="col-md-3"></a>
-            <h2 class="col-mmd-9">文本定义<h2>
-            <textarea class="col-md-10 pre-scrollable"></textarea>
-        </div> -->
-      </div>
+        <div class="form-group">
+          <label for="severe" >严重拥堵定义：缓速车量比例</label>
+          <input name="severe" class="form-control" id="severe">
+        </div>
+        <div class="form-group">
+          <label for="medium">拥堵定义：缓速车量比例</label>
+          <input name="medium" class="form-control" id="medium">
+        </div>
+        <div class="form-group">
+          <label for="slight">轻微拥堵定义：缓速车量比例</label>
+          <input name="slight" class="form-control" id="slight">
+        </div>
+        <div class="form-group">
+          <label for="min">最小数据量</label>
+          <input name="min" type="input" class="form-control" id="min" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="speed">缓速阈值定义</label>
+          <input name="speed" class="form-control" id="speed">
+        </div>
+      </form>
+      <button id="deduce" class="btn btn-primary">推理</button>
+      <button id="results" class="btn btn-primary">结果展示</button>
+      <button id="stop_results" class="btn btn-primary">停止展示</button>
+      <div id="main" style="width: 600px;height:400px;"></div>
 
     </div>
 
-    <div id="testModal"></div>
   </table>
 </div>
 
-<script type="text/javascript">
-  $.post('http://localhost:15100/updateScope', function(scopesResult) {
-    console.log(scopesResult);
-    var scopes = JSON.parse(scopesResult).scopes;
-    var testSelect = document.getElementById("scope");
-    $("#scope").empty();
-    for (var i = 0; i < scopes.length; i++) {
-      console.log(scopes[i]);
-//        var op1 = new Option(scopes[i], scopes[i], true, true);
-//        testSelect.options.add(op1);
-      var option = $("<option>").val(1).text(scopes[i]);
-      $("#scope").append(option);
-    }
+<script type="text/javascript" src="js/gd/rules.js"></script>
 
-  });
-
-  $("#scope").click(function() {
-    $.post('http://localhost:15100/updateScope', function(scopesResult) {
-      console.log(scopesResult);
-      var scopes = JSON.parse(scopesResult).scopes;
-      var testSelect = document.getElementById("scope");
-      $("#scope").empty();
-      for (var i = 0; i < scopes.length; i++) {
-        console.log(scopes[i]);
-//        var op1 = new Option(scopes[i], scopes[i], true, true);
-//        testSelect.options.add(op1);
-        var option = $("<option>").val(1).text(scopes[i]);
-        $("#scope").append(option);
-      }
-
-    });
-  });
-
-  var id = 1;
-  var resultId = 1;
-  $("#deduce").click(function(e) {
-    var deduceParams = $('#formID').serialize();
-    deduceParams = deduceParams + "&id=" + id;
-    console.log(deduceParams);
-    $.post('http://localhost:15100/deduce', deduceParams, function() {
-
-    });
-  });
-
-  var buffer = [];
-  var times = [];
-
-  function processTime(t) {
-    var date = new Date();
-    date.setTime(t);
-    return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-  }
-
-  var links = buffer.map(function(item, i) {
-    return {
-      source: i,
-      target: i + 1
-    };
-  });
-
-  option = {
-    title: {
-      text: '道路拥堵状态'
-    },
-    xAxis: {
-      type: 'category',
-      data: times,
-      splitLine: {
-        show: false
-      }
-    },
-    yAxis: {
-//            type: 'value',
-////            boundaryGap: [0, '100%'],
-//            splitLine: {
-//                show: false
-//            }
-    },
-//        series: [{
-//            name: '数据',
-//            type: 'line',
-//            showSymbol: false,
-//            hoverAnimation: false,
-//            data: buffer
-//        }]
-    series: [
-      {
-        type: 'graph',
-        layout: 'none',
-        coordinateSystem: 'cartesian2d',
-        symbolSize: 30,
-        label: {
-          normal: {
-            show: false
-          }
-        },
-        edgeSymbol: ['circle', 'arrow'],
-        edgeSymbolSize: [4, 10],
-        data: buffer,
-        links: links,
-        lineStyle: {
-          normal: {
-            color: '#2f4554'
-          }
-        }
-      }
-    ]
-  };
-
-  var timer = null;
-
-  $("#results").click(function(e) {
-    e.preventDefault();
-    buffer = [];
-    times = [];
-
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-
-    var params = {};
-    params["id"] = resultId;
-
-    timer = setInterval(function() {
-      $.post('http://localhost:15100/data', params, function(result) {
-        if(result["value"] == null) {
-          clearTimeout(timer);
-        }
-        buffer.push(result["value"]);
-        times.push(processTime(result["time"]));
-      });
-
-      var links = buffer.map(function(item, i) {
-        return {
-          source: i,
-          target: i + 1
-        };
-      });
-      if(buffer.length > 7) {
-        buffer.shift();
-        times.shift();
-        links.pop();
-      }
-      var links = buffer.map(function(item, i) {
-        return {
-          source: i,
-          target: i + 1
-        };
-      });
-
-      myChart.setOption({
-        xAxis: {
-          data: times
-        },
-        series: [{
-          links: links,
-          data: buffer
-        }]
-      });
-    }, 2000);
-
-  });
-
-  $("#stop_results").click(function(e) {
-    e.preventDefault();
-    clearInterval(timer);
-  });
-
-
-</script>
-<script>
-  $("#knowledgeBase").click(function(e) {
-    console.log("test");
-    $("#testModal").fadeIn();
-  });
-
-</script>
 </body>
 
 </html>
+
