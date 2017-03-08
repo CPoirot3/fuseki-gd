@@ -79,50 +79,97 @@
       <h2><i class="fa fa-info-circle"></i>定义事件处理规则:</h2>
       <p class="lead"></p>
     </div>
-
-    <!--<button class="btn btn-primary btn-lg hidden" data-toggle="modal" data-target="#myModal">-->
-      <!--目标定义-->
-    <!--</button>-->
-
   </table>
 
   <table class="row">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
-      <!--目标定义-->
-      <!--</button>-->
-      <!-- 模态框（Modal） -->
       <div class="modal-dialog">
         <div class="modal-content">
-
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-              &times;
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-              映射定义
-            </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">事件知识映射</h4>
           </div>
 
           <div class="modal-body">
             <form id="modal-form" role="form">
               <div class="form-group">
                 <label for="concept">知识对象</label>
-                <select name="concept" class="form-control" id="concept">
+                <select name="concept" class="form-control" id="concept"></select>
+              </div>
+
+              <div class="form-group">
+                <label for="incidentSelect">事件主题</label>
+                <select name="incidentSelect" id="incidentSelect" class="form-control">
+                  <option>shenzhen</option>
+                </select>
+
+                <br/>
+                <div class="row hidden" id="incidentParams">
+
+                  <div class="col-lg-2">
+                    <div class="input-group">
+                      <!--<span class="input-group-btn">-->
+                      <!--</span>-->
+                      <button class="btn btn-default" type="button">速度</button>
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                  <div class="col-lg-2">
+                    <div class="input-group">
+                      <button class="btn btn-default" type="button">经度</button>
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                  <div class="col-lg-2">
+                    <div class="input-group">
+                      <!--<span class="input-group-btn">-->
+                      <!--</span>-->
+                      <button class="btn btn-default" type="button">纬度</button>
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                  <div class="col-lg-2">
+
+                    <div class="input-group">
+                      <!--<span class="input-group-btn">-->
+                      <!--</span>-->
+                      <button class="btn btn-default" type="button">状态</button>
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                  <div class="col-lg-2">
+                    <div class="input-group">
+                      <!--<span class="input-group-btn">-->
+                      <!--</span>-->
+                      <button class="btn btn-default" type="button">方向</button>
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+              </div>
+
+              <div class="form-group">
+                <label for="scope">知识实例</label>
+                <select name="scope" class="form-control" id="scope">
                   <!--<option>福中路</option>-->
                   <!--<option>红岭中路</option>-->
                   <!--<option>翠竹路</option>-->
                   <!--<option>金田路</option>-->
                 </select>
-              </div>
-
-              <div class="form-group">
-                <div class="form-group">
-                  <label for="topic">事件主题</label>
-                  <select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">
-                    <option>shenzhen</option>
-                  </select>
-                </div>
               </div>
             </form>
           </div>
@@ -136,100 +183,91 @@
     </div>
 
     <div>
+      <h2 for="knowledgeBase">知识库</h2>
       <div>
-        <h2 for="knowledgeBase">知识库</h2>
-        <div>
-          <select name="topic" type="input" class="form-control" id="knowledgeBase" placeholder="traffic">
-            <option>Traffic</option>
-          </select>
-        </div>
-        <p></p>
-
-        <button id="targetButton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">映射定义</button>
+        <select name="topic" type="input" class="form-control" id="knowledgeBase" placeholder="traffic">
+          <option>Traffic</option>
+        </select>
       </div>
+      <p></p>
+      <br/>
+      <button id="targetButton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">映射定义</button>
+      <button id="modalDeduceButton" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">推理定义</button>
+      <button id="deduce" class="btn btn-primary">推理</button>
+      <button id="results" class="btn btn-primary">结果展示</button>
+      <button id="stop_results" class="btn btn-primary">停止展示</button>
+
     </div>
   </table>
   <br/>
   <table class="row">
     <div id="mainForm" class='schema hidden'>
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
 
-      <h2 for="formID">推理定义</h2>
-      <form id="formID" role="form">
-        <!--<h3>推理目标</h3>-->
-        <!--<div class="form-group">-->
-        <!--<label for="knowledgeBase">知识库</label>-->
-        <!--<select name="topic" type="input" class="form-control" id="knowledgeBase" placeholder="traffic">-->
-        <!--<option>Traffic</option>-->
-        <!--</select>-->
-        <!--</div>-->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+              </button>
+              <h4 class="modal-title" id="myModalLabel2">
+                约束定义
+              </h4>
+            </div>
 
-        <!--<div class="form-group">-->
-        <!--<label for="topic">事件主题</label>-->
-        <!--<select name="topic" type="input" class="form-control" id="topic" placeholder="Traffic">-->
-        <!--<option>shenzhen</option>-->
-        <!--</select>-->
-        <!--</div>-->
+            <div class="modal-body">
+              <form id="formID" role="form">
+                <div class="form-group">
+                  <label for="scope2">道路</label>
+                  <select name="scope2" class="form-control" id="scope2">
+                    <option>福中路</option>
+                    <option>红岭中路</option>
+                    <option>翠竹路</option>
+                    <option>金田路</option>
+                  </select>
+                </div>
 
-        <!--<div class="form-group">-->
-        <!--<label for="scope">Scope</label>-->
-        <!--<select name="scope" class="form-control" id="scope">-->
-        <!--&lt;!&ndash;<option>福中路</option>&ndash;&gt;-->
-        <!--&lt;!&ndash;<option>红岭中路</option>&ndash;&gt;-->
-        <!--&lt;!&ndash;<option>翠竹路</option>&ndash;&gt;-->
-        <!--&lt;!&ndash;<option>金田路</option>&ndash;&gt;-->
-        <!--</select>-->
-        <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<button name="params"  type="button" class="form-control btn-primary" id="paramsDefineButton">定义</button>-->
+                <!--</div>-->
+                <button name="params" class="btn-primary" id="paramsDefineButton">定义</button>
 
-        <!--<div class="form-group">-->
-        <!--<label for="map-source">映射定义</label>-->
-        <!--<select name="map-source" type="input" class="form-control" id="map-source" placeholder="">-->
-        <!--<option>shenzhen</option>-->
-        <!--<option>x,y -> Road</option>-->
-        <!--</select>-->
-        <!--&lt;!&ndash;<select name="map-knowledge" type="input" class="form-control" id="map-knowledge" placeholder="">&ndash;&gt;-->
-        <!--&lt;!&ndash;<option>Position</option>&ndash;&gt;-->
-        <!--&lt;!&ndash;<option>Road</option>&ndash;&gt;-->
-        <!--&lt;!&ndash;</select>&ndash;&gt;-->
-        <!--</div>-->
+                <div class="hidden form-group" id="paramsDefineDiv">
+                  <div class="form-group">
+                    <label for="severe" >严重拥堵定义：缓速车量比例</label>
+                    <input name="severe" class="form-control" id="severe">
+                  </div>
+                  <div class="form-group">
+                    <label for="medium">拥堵定义：缓速车量比例</label>
+                    <input name="medium" class="form-control" id="medium">
+                  </div>
+                  <div class="form-group">
+                    <label for="slight">轻微拥堵定义：缓速车量比例</label>
+                    <input name="slight" class="form-control" id="slight">
+                  </div>
+                  <div class="form-group">
+                    <label for="min">最小数据量</label>
+                    <input name="min" type="input" class="form-control" id="min" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="speed">缓速阈值定义</label>
+                    <input name="speed" class="form-control" id="speed">
+                  </div>
+                </div>
+              </form>
 
-        <div class="form-group">
-          <label for="scope">知识实例</label>
-          <select name="scope" class="form-control" id="scope">
-            <!--<option>福中路</option>-->
-            <!--<option>红岭中路</option>-->
-            <!--<option>翠竹路</option>-->
-            <!--<option>金田路</option>-->
-          </select>
-        </div>
+            </div>
 
-        <div class="form-group">
-          <label for="severe" >严重拥堵定义：缓速车量比例</label>
-          <input name="severe" class="form-control" id="severe">
-        </div>
-        <div class="form-group">
-          <label for="medium">拥堵定义：缓速车量比例</label>
-          <input name="medium" class="form-control" id="medium">
-        </div>
-        <div class="form-group">
-          <label for="slight">轻微拥堵定义：缓速车量比例</label>
-          <input name="slight" class="form-control" id="slight">
-        </div>
-        <div class="form-group">
-          <label for="min">最小数据量</label>
-          <input name="min" type="input" class="form-control" id="min" placeholder="">
-        </div>
-        <div class="form-group">
-          <label for="speed">缓速阈值定义</label>
-          <input name="speed" class="form-control" id="speed">
-        </div>
-      </form>
-      <button id="deduce" class="btn btn-primary">推理</button>
-      <button id="results" class="btn btn-primary">结果展示</button>
-      <button id="stop_results" class="btn btn-primary">停止展示</button>
-      <div id="main" style="width: 600px;height:400px;"></div>
-
+            <div class="modal-footer">
+              <button id="close2" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button id="confirm2" type="button" class="btn btn-primary" data-dismiss="modal">提交更改</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div>
     </div>
 
+    <div id="main" style="width: 600px;height:400px;"></div>
   </table>
 </div>
 
