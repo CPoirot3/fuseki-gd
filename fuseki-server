@@ -15,20 +15,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # Run fuseki as a standalone server
-dir=`ls ./run/configuration`
-for f in $dir
-do
-    echo $f
-    cat run/configuration/$f
-    content=`cat run/configuration/$f | grep ja:RDFDataset`
-    echo "content :"
-    echo $content
-    if [ ! -z "$content" ]
-    then
-        echo "delete config file"
-        rm run/configuration/$f
-        fi
-done
+
+#dir=`ls ./run/configuration`
+#for f in $dir
+#do
+#    echo $f
+#    cat run/configuration/$f
+#    content=`cat run/configuration/$f | grep ja:RDFDataset`
+#    echo "content :"
+#    echo $content
+#    if [ ! -z "$content" ]
+#    then
+#        echo "delete config file"
+#        rm run/configuration/$f
+#        fi
+#done
 
 export FUSEKI_HOME="${FUSEKI_HOME:-$PWD}"
 echo $FUSEKI_HOME
